@@ -1,6 +1,8 @@
 - install and using chalk, customize your output.
 
-![](https://github.com/swifty94/nodejs-course/tree/master/lesson_12/result.png)
+- Result:
+
+![](https://github.com/swifty94/nodejs-course/blob/master/lesson_12/result.png)
 
 <pre>
 C:\Users\kiril\Documents\LenovoData\Dev\nodejs-course\lesson_12>ls -l
