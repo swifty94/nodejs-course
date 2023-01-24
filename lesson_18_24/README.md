@@ -6,4 +6,10 @@
 
 - Result for now: 
 
+- command hints using yargs lib.
+
+![](https://github.com/swifty94/nodejs-course/blob/master/lesson_18_24/result2.png)
+
+- actual usage of program
+
 ![](https://github.com/swifty94/nodejs-course/blob/master/lesson_18_24/result.png)

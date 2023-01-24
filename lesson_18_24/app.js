@@ -4,7 +4,7 @@ const chalk = require('chalk');
 
 yargs.command({
     command: 'add',
-    describe: 'Add a new note: app.js add --title="Hello" --text="World"',
+    describe: 'Add a new note: node app.js add --title="Hello" --text="World"',
     builder: {
         title: {
             describe: 'Title of the note',
@@ -23,7 +23,7 @@ yargs.command({
 })
 yargs.command({
     command:'remove',
-    describe: 'Remove a note: app.js remove --title="Hello"',
+    describe: 'Remove a note: node app.js remove --title="Hello"',
     builder: {
         title: {
             describe: 'Title of the note',
@@ -38,7 +38,7 @@ yargs.command({
 
 yargs.command({
     command: 'list',
-    describe: 'List all notes: app.js list',
+    describe: 'List all notes: node app.js list',
     handler: function(){
         notes.list();
     }
@@ -46,7 +46,7 @@ yargs.command({
 
 yargs.command({
     command:'read',
-    describe: 'Read a note: app.js read --title="Hello"',
+    describe: 'Read a note: node app.js read --title="Hello"',
     builder: {
         title: {
             describe: 'Title of the note',
