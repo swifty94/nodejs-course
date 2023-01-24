@@ -21,9 +21,15 @@ TASK:
 // version 2 to try myself :)
 
 const getNotes = require('./notes.js');
+// const validator = require('validator') test of importing third-party npm modules
 
-let myNotes = ["Wake up", "Go to shower", "Make a coffee", "Get back to work"];
-getNotes(myNotes);
+/*
+Lesson 12:
+ install and using chalk, customize your output.
+*/
+
+//let myNotes = ["Wake up", "Go to shower", "Make a coffee", "Get back to work"];
+//getNotes(myNotes);
 
 /*
 Will cause:
@@ -34,7 +40,8 @@ Note: 2 text: Go to shower
 Note: 3 text: Make a coffee
 Note: 4 text: Get back to work
 */
-
+let wrongNotesType = 12;
+getNotes(wrongNotesType);
 /*
 let wrongNotesType = 12;
 getNotes(wrongNotesType);

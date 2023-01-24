@@ -16,8 +16,12 @@ required using 4.1.2 version of chalk in package.json
 https://stackoverflow.com/questions/70309135/chalk-error-err-require-esm-require-of-es-module/70425265#70425265
 new version of chalk says to use syntax like import chalk from 'chalk'; which will fail here :(
 */
+
+// functions to affect the console.log output color
 const onSuccess = chalk.bold.green;
 const onFail = chalk.bold.red;
+
+// main method of module
 const getNotes = function (notes) {
     /*
     :param - Array
