@@ -1,14 +1,4 @@
 // Module that provide getNotes method and returns notes list (dummy string)
-// TODO: try to implement accepting parameter (e.g., array and return it to console.)
-
-// version 1, according to lesson
-
-// const getNotes = function () {
-//     return "Your notes are: X, Y, Z ...."
-// }
-
-
-// version 2, just for fun :)
 
 const chalk = require("chalk");
 /*

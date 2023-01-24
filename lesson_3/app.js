@@ -1,32 +1,10 @@
 /*
-Lecture 10. Working with importing stuff from one JS file to another
-*/
-
-/*
 TASK:
     - create notes.js file
     - create getNotes function returning notes
     - export getNotes to app.js and call it
 */
-
-//TODO: try to implement accepting parameter (e.g., array and return it to console.)
-
-// version 1 according to lesson
-
-// const getNotes = require('./notes.js')
-
-// let notes = getNotes()
-// console.log(notes)
-
-// version 2 to try myself :)
-
 const getNotes = require('./notes.js');
-// const validator = require('validator') test of importing third-party npm modules
-
-/*
-Lesson 12:
- install and using chalk, customize your output.
-*/
 
 //let myNotes = ["Wake up", "Go to shower", "Make a coffee", "Get back to work"];
 //getNotes(myNotes);

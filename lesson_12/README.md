@@ -1,3 +1,7 @@
+- install and using chalk, customize your output.
+
+![](https://github.com/swifty94/nodejs-course/tree/master/lesson_12/result.png)
+
 <pre>
 C:\Users\kiril\Documents\LenovoData\Dev\nodejs-course\lesson_12>ls -l
 total 9
@@ -28,5 +32,3 @@ Note: 4 text: Get back to work
 
 C:\Users\kiril\Documents\LenovoData\Dev\nodejs-course\lesson_12>
 </pre>
-
-![](https://github.com/swifty94/nodejs-course/tree/master/lesson_12/result.png)
