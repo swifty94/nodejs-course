@@ -1,14 +1,5 @@
-const getNotes = require('./notes.js');
 const yargs = require('yargs');
 const chalk = require('chalk');
-// let myNotes = ["Wake up", "Go to shower", "Make a coffee", "Get back to work"];
-// getNotes(myNotes);
-
-/*
-    Test error output in case wrong input type
-*/
-// let wrongNotesType = 12;
-// getNotes(wrongNotesType);
 
 yargs.command({
     command: 'add',
