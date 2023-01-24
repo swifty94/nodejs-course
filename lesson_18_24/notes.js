@@ -1,7 +1,7 @@
 const chalk = require('chalk');
 const fs = require('fs');
 
-const loadNotes = function(){
+const loadNotes = () => {
     try {
         return JSON.parse(fs.readFileSync('notes.json').toString());
     } catch (error) {
@@ -9,11 +9,11 @@ const loadNotes = function(){
     }
 }
 
-const saveNotes = function(notes) {
+const saveNotes = (notes) => {
     fs.writeFileSync('notes.json', JSON.stringify(notes));
 }
 
-const add = function (title, text) {
+const add = (title, text)  => {
     const notes = loadNotes();
     const duplicates = notes.filter(function (note) {
         return note.title === title;
@@ -30,7 +30,7 @@ const add = function (title, text) {
     }
 }
 
-const remove = function (title){
+const remove = (title) => {
     const notes = loadNotes();
     notes.forEach(function(note){
         idx = notes.indexOf(note)
@@ -43,18 +43,29 @@ const remove = function (title){
     console.log("List of all notes updated\n", loadNotes());
 }
 
-const read = function (title) {
+const read = (title) => {
     const notes = loadNotes();
     notes.forEach(function (note) {
         if (note.title === title) {
-            console.log(chalk.green.bold("Found the note you've searched.\n") + chalk.yellow.bold("\nTitle: " + note.text + "\nText: " + note.text));
+            console.log(chalk.green.bold("Found the note you've searched.\n") + chalk.yellow.bold("\nTitle: " + note.title + "\nText: " + note.text));
         }
     });
 }
 
 const list = function () {
     try {
-        console.log("List of all notes\n", loadNotes());
+        id = 1;
+        const notes = loadNotes();
+        if (notes.length > 0) {
+            notes.forEach((note) => {
+                console.log(chalk.blue.bold('Note ID: ', id))
+                console.log(chalk.blue.bold('Title: ', note.title))
+                console.log(chalk.blue.bold('Text: ', note.text)+"\n")
+                id++
+            })
+        } else {
+            console.log(chalk.red.bold("No notes found."));
+        }
     } catch (error) {
         console.log("Error: " + error);
     };
