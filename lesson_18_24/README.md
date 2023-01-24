@@ -2,9 +2,7 @@
 - storing out notes in JSON for now...
 - task is to create an ability to add/remove/read and list notes from/to JSON file
 
-- Stopped on 21st lesson for now...need to learn some more about new features of JS to me.
-
-- Result for now: 
+- Complete results according to requirements on the course (with minor self adjustments :)):
 
 - command hints using yargs lib.
 
