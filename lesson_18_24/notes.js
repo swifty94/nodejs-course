@@ -15,7 +15,7 @@ const saveNotes = (notes) => {
 
 const add = (title, text)  => {
     const notes = loadNotes();
-    const duplicates = notes.filter(function (note) {
+    const duplicates = notes.filter((note) => {
         return note.title === title;
     })
     if (duplicates.length === 0) {
