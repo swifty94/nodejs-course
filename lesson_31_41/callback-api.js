@@ -1,5 +1,5 @@
 let request = require('request');
-const token = '?access_token=pk.eyJ1IjoiZHVtbXlkZXY3NzciLCJhIjoiY2xkYzd6NW52MDdtNDNucXp0Mm9mbnB4ayJ9.cYbuOWuDPxaEMAcAd1sqWA' // no real tokens here ;)
+const token = '' // no real tokens here ;)
 
 const geo = (address, callbackFucnction) => {
     const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${address}.json${token}`
