@@ -15,3 +15,6 @@
 
 ![](https://github.com/swifty94/nodejs-course/blob/master/lesson_31_41/result3.png)
 
+- 27.01 - learned something new about callback functions and their usage in Node.js
+
+![](https://github.com/swifty94/nodejs-course/blob/master/lesson_31_41/result5.png)
