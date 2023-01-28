@@ -7,8 +7,9 @@ const getData = (address, callbackFucnction) => {
     request({ url: url, json: true}, (err, res) => {
         if (err) {
             callbackFucnction("Unable to reach API service! Check your Internet connection\n", null);
-        } else if (res.body.features.length === 0) {
-            callbackFucnction(`No data available for location: ${address}`, null);
+        } else if (res.statusCode !== 200 || res.body.features.length === 0) {
+            let issue = `HTTP code: ${res.statusCode}, Message: ${res.statusMessage}`
+            callbackFucnction(`No data available for location: ${address}\n${issue}`, null);
         } else {
             const data = {
                 "Latitude:": res.body.features[0].center[1],

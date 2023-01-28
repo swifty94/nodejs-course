@@ -7,11 +7,13 @@ const getData = (address, callbackFucnction) => {
     request({ url: url, json: true}, (err, res) => {
         if (err) {
             callbackFucnction("Unable to reach API service! Check your Internet connection\n", null);
-        } else if (res.body.current.length === 0) {
-            callbackFucnction(`No data available for location: ${address}`, null);
+        } else if (res.statusCode !== 200) {
+                let issue = `HTTP code: ${res.statusCode}, Message: ${res.statusMessage}`
+                callbackFucnction(`No data available for location: ${address}\n${issue}`, null);
         } else {
             let data = {
                 "Requested location:": address,
+                "Accurate location data:": `${res.body.location.name}, ${res.body.location.region}, ${res.body.location.country}`,
                 "Last updated:": res.body.current.last_updated,
                 "Condition:": res.body.current.condition.text,
                 "Temperature (in Celsius):": res.body.current.temp_c,

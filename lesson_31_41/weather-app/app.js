@@ -4,9 +4,9 @@ const wetherApi = require('./utils/weather-api');
 
 yargs.command({
   command: 'geo',
+  describe: '\nUsage:\n user@pc~ node app.js geo --l="<YOUR_CITY/TOWN>"\nYou will get Latitude and Longitude according to your location input\nuser@pc~ node app.js geo --l="Kharkiv"\n',
   builder: {
     l:{
-      describe: '\nUsage:\n user@pc~ node app.js geo --l="<YOUR_CITY/TOWN>"\nYou will get Latitude and Longitude according to your location input\nuser@pc~ node app.js geo --l="Kharkiv"\n',
       type:'string',
       demandOption: true
     }
@@ -23,9 +23,9 @@ yargs.command({
 
   yargs.command({
     command: 'weather',
+    describe: '\nUsage:\n user@pc~ node app.js weather --l="<YOUR_CITY/TOWN/COORDINATES (from geo output, as an option)>"\nYou will get weather details according to your location input\nuser@pc~ node app.js weather --l="Kharkiv"\n',
     builder: {
       l:{
-        describe: '\nUsage:\n user@pc~ node app.js weather --l="<YOUR_CITY/TOWN/COORDINATES (from geo output, as an option)>"\nYou will get weather details according to your location input\nuser@pc~ node app.js weather --l="Kharkiv"\n',
         type:'string',
         demandOption: true
       }

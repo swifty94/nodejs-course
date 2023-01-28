@@ -5,6 +5,8 @@
  - add another yarg
  - refactor main
 
+ // TODO: forecast module
+
 - New structure:
 
 <pre>
