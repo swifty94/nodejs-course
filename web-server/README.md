@@ -1,11 +1,18 @@
-Project structure until using webserver
+31.01 webserver structure
 <pre>
 AppRoot:.
-|   app.js
 |   keys-default.json
+|   keys.json
+|   main.js
 |   package-lock.json
 |   package.json
 |   README.md
+|
++---public
+|       index.html
+|
++---src
+|       app.js
 |
 \---utils
         geo-api.js
@@ -13,7 +20,10 @@ AppRoot:.
         weather-api.js
 </pre>
 
-Goal is to implement a GUI interface in the web browser so user can interact with the logic we've done for getting data from the geo and weather api.
+TODO:
+- serving static content
+- dynamic rendering of static content
+- templating and so on.
 
 - RESULT:
 
