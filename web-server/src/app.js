@@ -1,24 +1,17 @@
+const path = require('path');
 const express = require('express');
-
+const publicFolder = path.join(__dirname, '../public');
+//console.log(publicFolder)
 const app = express();
-
-app.get('/', (req, res) => {
-    res.send('Home page of the app');
-});
-
-
-app.get('/about', (req, res) => {
-    res.send('About us page');
-});
-
-
-app.get('/help', (req, res) => {
-    res.send('Help for users');
-});
-
+app.use(express.static(publicFolder));
 
 app.get('/weather', (req, res) => {
-    res.send('Weather data page');
+    res.send([
+        {
+            'location': 'Kiev',
+            'temp': '-2 C'
+        }
+    ]);
 });
 
 app.listen(3000, () => {
