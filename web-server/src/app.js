@@ -1,15 +1,12 @@
 const path = require('path');
-const help = require('../utils/help');
-const weather_api = require('../utils/weather-api');
-const geo_api = require('../utils/geo-api');
-const address = help.getJsonValue('LOCATION');
+const Api = require('../utils/api');
 const express = require('express');
 const publicFolder = path.join(__dirname, '../public');
 const app = express();
 app.use(express.static(publicFolder));
 
 app.get('/weather', (req, res) => {
-    weather_api.getData(address, (err, data) => {
+    Api.getWeather((err, data) => {
         if (err) {
             console.log(err);
         }
@@ -18,7 +15,7 @@ app.get('/weather', (req, res) => {
 });
 
 app.get('/geo', (req, res) => {
-    geo_api.getData(address, (err, data) => {
+    Api.getGeo((err, data) => {
         if (err) {
             console.log(err);
         }
@@ -26,6 +23,7 @@ app.get('/geo', (req, res) => {
     })
 });
 
+
 app.listen(3000, () => {
-    console.log(`Starting application on port 3000`);
+    console.log(`Starting webserver`);
 })

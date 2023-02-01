@@ -1,5 +1,5 @@
 /*
- *      Some helper functions to be included in this module
+ *      Some helper to get secured items from JSON and to be exported in final constants.
  */
 const fs = require('fs');
 const getJsonValue = (jsonKey) => {
@@ -11,6 +11,17 @@ const getJsonValue = (jsonKey) => {
     }
 }
 
+const weatherToken = getJsonValue('WEATHER_API_KEY');
+const geoToken = getJsonValue('LOCATION_API_KEY');
+const address = getJsonValue('LOCATION');
+
+/**
+ * Only publicly exported items from this module
+ */
+const geoUrl = `https://api.mapbox.com/geocoding/v5/mapbox.places/${address}.json?access_token=`+geoToken;
+const weatherUrl = `https://api.weatherapi.com/v1/current.json?q=${address}&aqi=yes&key=${weatherToken}`;
+
 module.exports = {
-    getJsonValue: getJsonValue
+    geoUrl: geoUrl,
+    weatherUrl: weatherUrl
 }
