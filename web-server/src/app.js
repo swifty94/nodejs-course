@@ -1,17 +1,29 @@
 const path = require('path');
+const help = require('../utils/help');
+const weather_api = require('../utils/weather-api');
+const geo_api = require('../utils/geo-api');
+const address = help.getJsonValue('LOCATION');
 const express = require('express');
 const publicFolder = path.join(__dirname, '../public');
-//console.log(publicFolder)
 const app = express();
 app.use(express.static(publicFolder));
 
 app.get('/weather', (req, res) => {
-    res.send([
-        {
-            'location': 'Kiev',
-            'temp': '-2 C'
+    weather_api.getData(address, (err, data) => {
+        if (err) {
+            console.log(err);
         }
-    ]);
+        res.send(data);
+    })
+});
+
+app.get('/geo', (req, res) => {
+    geo_api.getData(address, (err, data) => {
+        if (err) {
+            console.log(err);
+        }
+        res.send(data);
+    })
 });
 
 app.listen(3000, () => {

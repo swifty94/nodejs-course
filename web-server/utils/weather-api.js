@@ -1,6 +1,5 @@
 const request = require('request');
 const help = require('./help');
-
 const token = help.getJsonValue('WEATHER_API_KEY');
 const getData = (address, callbackFucnction) => {
     const url = `https://api.weatherapi.com/v1/current.json?q=${address}&aqi=yes&key=${token}`;
