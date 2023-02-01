@@ -1,6 +1,5 @@
 const request = require('request');
 const help = require('./help');
-const address = help.getJsonValue('LOCATION');
 const token = help.getJsonValue('LOCATION_API_KEY');
 const getData = (address, callbackFucnction) => {
     const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${address}.json?access_token=`+token;
