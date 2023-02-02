@@ -25,5 +25,7 @@ app.get('/geo', (req, res) => {
 
 
 app.listen(3000, () => {
-    console.log(`Starting webserver`);
+    console.log('----------------------------------------------------------------');
+    console.log(`Starting Express web-server...`);
+    console.log(`Serving on: http://localhost:3000`);
 })
