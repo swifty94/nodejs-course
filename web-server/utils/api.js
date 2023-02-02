@@ -2,6 +2,7 @@ const request = require('request');
 const help = require('./help');
 const weatherUrl = help.weatherUrl;
 const geoUrl = help.geoUrl;
+const address = help.address;
 const getGeo = (callback) => {
     request({ url: geoUrl, json: true}, (err, res) => {
         if (err) {

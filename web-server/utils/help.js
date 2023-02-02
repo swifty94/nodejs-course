@@ -23,5 +23,6 @@ const weatherUrl = `https://api.weatherapi.com/v1/current.json?q=${address}&aqi=
 
 module.exports = {
     geoUrl: geoUrl,
-    weatherUrl: weatherUrl
+    weatherUrl: weatherUrl,
+    address: address
 }
