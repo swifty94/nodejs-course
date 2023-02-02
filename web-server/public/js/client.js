@@ -1,9 +1,4 @@
 console.log("Client side JavaScript code is being executed")
-// console.log("Connected:\n",
-// {
-//     "userAgent": `${navigator.userAgent`,
-//     "platform": `${navigator.platform`,
-// )
 var clientInfo = {
     "Client side information":
         {

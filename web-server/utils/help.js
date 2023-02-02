@@ -8,6 +8,7 @@ const getJsonValue = (jsonKey) => {
         return data[jsonKey];
     } catch (error) {
         console.log("No keys.json found in the application directory.", error);
+        return;
     }
 }
 
