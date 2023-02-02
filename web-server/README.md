@@ -24,6 +24,10 @@ AppRoot:.
         help.js
 </pre>
 
+- Requirements:
+
+https://nodejs.org/en/download/
+
 - Install:
 
 <pre>
