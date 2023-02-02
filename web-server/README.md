@@ -6,22 +6,26 @@ AppRoot:.
 |   package-lock.json
 |   package.json
 |   README.md
+|   sample.gif
 |
 +---public
-|   |   about.html
-|   |   geolocation.html
-|   |   index.html
-|   |   weather.html
-|   |
-|   \---img
-|           readme.png
-|
+|   +---css
+|   |       main.css
+|   +---img
+|   |       readme.png
+|   \---js
+|           client.js
 +---src
 |       app.js
-|
-\---utils
-        api.js
-        help.js
++---utils
+|       api.js
+|       help.js
+\---views
+        about.hbs
+        geo.hbs
+        index.hbs
+        weather.hbs
+
 </pre>
 
 - Requirements:

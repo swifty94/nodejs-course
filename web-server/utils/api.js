@@ -9,7 +9,9 @@ const getGeo = (callback) => {
             callback("Unable to reach API service! Check your Internet connection\n", null);
         } else if (res.statusCode !== 200 || res.body.features.length === 0) {
             let issue = `HTTP code: ${res.statusCode}, Message: ${res.statusMessage}`
-            callback(`No data available for location: ${address}\n${issue}`, null);
+            callback(`No data available for location: ${address}\n${issue}`, {
+                'Response': `No data available for location: ${address}`
+            });
         } else {
             callback(null, {
                 "Latitude:": res.body.features[0].center[1],
@@ -24,7 +26,9 @@ const getWeather = (callback) => {
             callback("Unable to reach API service! Check your Internet connection\n", null);
         } else if (res.statusCode !== 200 || res.body.current.length === 0) {
                 let issue = `HTTP code: ${res.statusCode}, Message: ${res.statusMessage}`
-                callback(`No data available for location: ${address}\n${issue}`, null);
+                callback(`No data available for location: ${address}\n${issue}`, {
+                    'Response': `No data available for location: ${address}`
+                });
         } else {
             callback(null, {
                 "Location data:": `${res.body.location.name}, ${res.body.location.region}, ${res.body.location.country}`,
