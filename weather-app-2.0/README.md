@@ -1,4 +1,4 @@
-04.02 Result
+05.02 Result
 
 <pre>
 AppRoot:.
@@ -29,9 +29,6 @@ AppRoot:.
 |   |       time.png
 |   |       wind.jpg
 |   |       wind.png
-|   |
-|   \---js
-|           client.js
 |
 +---src
 |       app.js
