@@ -54,8 +54,8 @@ AppRoot:.
 - Install:
 
 <pre>
-- rename your settings-default.json to settings.json
-- open the settings.json and put your WEATHER_API_KEY. APP_PORT can be left as is if you not sure what to use.
+- rename your app-default.json to app.json
+- open the app.json and put your WEATHER_API_KEY. APP_PORT can be left as is if you not sure what to use.
 - open terminal (if you are on MacOS or Linux) or CMD/Powershell if you are on Windows.
 - go to the application directory (e.g., cd /Desktop/weather-app-2.0/)
 - run npm install
