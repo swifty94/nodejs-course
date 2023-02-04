@@ -12,6 +12,8 @@ const getData = (url, callback) => {
             city : res.body.location.name,
             country : res.body.location.country,
             time : res.body.location.localtime,
+            lat: res.body.location.lat,
+            lon: res.body.location.lon,
             condition_txt : res.body.current.condition.text,
             condition_img : res.body.current.condition.icon,
             temp_c : res.body.current.temp_c,
