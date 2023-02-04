@@ -23,7 +23,7 @@ const getData = (url, callback) => {
             humidity : res.body.current.humidity,
             wind: res.body.current.wind_kph,
             cloud : res.body.current.cloud,
-            pressure: res.body.current.pressure_mb*0.75
+            pressure: res.body.current.pressure_mb*0.75 // convert millibars to mmHg
           });
         }
     });
