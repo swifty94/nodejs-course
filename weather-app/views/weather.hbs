@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" lang="en">
+    <header>
+        <link rel="stylesheet" href="/css/main.css">
+    </header>
+    <body>
+        <h1 style="text-align: center; font-size: 25px;">Your result:</h1>
+        <br />
+        <div class="weather-result">
+          <ul class="img-grid">
+            <li>
+              <img src="../img/time.png" alt="Local time">
+              <p>Local time: {{ data.time }}</p>
+            </li>
+            <li>
+              <img src="../img/country.jpg" alt="Country">
+              <p>Country: {{ data.country }}</p>
+            </li>
+            <li>
+              <img src="../img/city.png" alt="City">
+              <p>City: {{ data.city }}</p>
+            </li>
+            <li>
+              <img src="https:{{ data.condition_img }}" alt="Condition">
+              <p>Condition: {{ data.condition_txt }}</p>
+            </li>
+            <li>
+              <img src="../img/temp_c.png" alt="Temperature_c">
+              <p>Temperature (C): {{ data.temp_c }}</p>
+            </li>
+            <li>
+              <img src="../img/feels_like.png" alt="FeelsLike_c">
+              <p>Feels like (C): {{ data.feelslike_c }}</p>
+            </li>
+            <li>
+              <img src="../img/temp_f.png" alt="Temperature_f">
+              <p>Temperature (F): {{ data.temp_f }}</p>
+            </li>
+            <li>
+              <img src="../img/feels_like.png" alt="FeelsLike_h">
+              <p>Feels like (F): {{ data.feelslike_f }}</p>
+            </li>
+            <li>
+              <img src="../img/wind.png" alt="Wind km/h">
+              <p>Wind km/h: {{ data.wind }}</p>
+            </li>
+            <li>
+              <img src="../img/cloud.png" alt="Cloud %">
+              <p>Cloud %: {{ data.cloud }}</p>
+            </li>
+            <li>
+              <img src="../img/humidity.png" alt="Humidity %">
+              <p>Humidity %: {{ data.humidity }}</p>
+            </li>
+            <li>
+              <img src="../img/pressure.png" alt="Pressure millibars">
+              <p>Pressure millibars: {{ data.pressure }}</p>
+            </li>
+          </ul>
+        </div>
+    </body>
+    <br>
+    <footer>
+      <p style="text-align: center;">Created by &copy; swifty94</p>
+      <br>
+      <h3 style="text-align: center;"><a href="https://github.com/swifty94">GitHub</a></h3>
+    </footer>
+</html>

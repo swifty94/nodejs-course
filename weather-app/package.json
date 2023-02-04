@@ -1,0 +1,25 @@
+{
+  "name": "web-weather-app",
+  "version": "2.0.0",
+  "description": "simple web-weather application",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/swifty94/nodejs-course.git"
+  },
+  "author": "swifty94",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/swifty94/nodejs-course/issues"
+  },
+  "homepage": "https://github.com/swifty94/nodejs-course#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "hbs": "^4.2.0",
+    "request": "^2.88.2"
+  },
+  "keywords": []
+}
