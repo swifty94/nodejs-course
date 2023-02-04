@@ -1,4 +1,5 @@
-31.01 webserver structure
+03.02 web-server structure
+
 <pre>
 AppRoot:.
 |   keys-default.json
@@ -35,9 +36,15 @@ https://nodejs.org/en/download/
 - Install:
 
 <pre>
- - npm install
- - mv keys-default.json keys.json
- - put your own relevant keys into the respective sections for https://api.mapbox.com/ and https://api.weatherapi.com/ (Free subscription, no card required)
+ - run 'npm install' in terminal or cmd inside the root folder of the project
+ - rename keys-default.json keys.json
+ - put your own relevant keys into the respective sections for
+
+        https://api.mapbox.com/
+        https://api.weatherapi.com/
+
+ Both have free subscription, no card required :)
+
  - put Location of your choice in the keys.json respective section
 </pre>
 
