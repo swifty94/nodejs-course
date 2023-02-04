@@ -1,0 +1,4 @@
+{
+    "WEATHER_API_KEY":"YOUR_KEY",
+    "APP_PORT": 3000
+}
