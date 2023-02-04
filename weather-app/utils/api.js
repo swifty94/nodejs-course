@@ -2,11 +2,11 @@ const request = require('request');
 const getData = (url, callback) => {
     request({ url: url, json: true}, (err, res) => {
         if (err) {
-            callback("Unable to reach API service! Check your Internet connection\n", null);
+            callback({response: 'Internal server error. Unable to reach API service. Check your Internet connection.', error: err}, {response: 'Internal server error\nUnable to reach API service! Check your Internet connection\n', error: err});
         } else if (res.statusCode !== 200 || res.body.current.length === 0) {
                 let issue = `HTTP code: ${res.statusCode}, Message: ${res.statusMessage}`
-                callback(`No data available for location: ${address}\n${issue}`,
-                null);
+                callback({response: issue, error: err},
+                    {response: issue, error: err});
         } else {
             callback(null, {
             city : res.body.location.name,

@@ -21,7 +21,8 @@ app.get('/weather', (req, res) => {
     const url = `https://api.weatherapi.com/v1/current.json?q="${req.query.search}"&aqi=yes&key=${weatherToken}`;
     api.getData(url, (err, data) => {
         if (err) {
-            console.log(err);
+            // api provides an error response in JSON format anyway
+            res.send(data);
         } else {
             res.render('weather', {'data': data});
         }
