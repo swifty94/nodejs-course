@@ -54,12 +54,18 @@ AppRoot:.
 - Install:
 
 <pre>
-npm install
+- rename your settings-default.json to settings.json
+- open the settings.json and put your WEATHER_API_KEY. APP_PORT can be left as is if you not sure what to use.
+- open terminal (if you are on MacOS or Linux) or CMD/Powershell if you are on Windows.
+- go to the application directory (e.g., cd /Desktop/weather-app-2.0/)
+- run npm install
 </pre>
 
 - Run:
 
 <pre>
+- after the installation in the same directory run:
+
 ~ \weather-app-2.0>node src/app.js
 ----------------------------------------------------------------
 Starting Express web-server...
@@ -68,7 +74,7 @@ Serving on: http://localhost:3000
 
 - RESULT:
 
-![](https://github.com/swifty94/nodejs-course/blob/master/web-server/sample1.png)
+![](https://github.com/swifty94/nodejs-course/blob/master/weather-app-2.0/sample1.png)
 
 
-![](https://github.com/swifty94/nodejs-course/blob/master/web-server/sample2.png)
+![](https://github.com/swifty94/nodejs-course/blob/master/weather-app-2.0/sample2.png)
