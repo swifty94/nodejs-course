@@ -29,6 +29,11 @@ app.get('/weather', (req, res) => {
     })
 });
 
+app.get('*', (req, res) => {
+    badUrl = req.url.toString();
+    res.render('404', {'badUrl':badUrl});
+})
+
 app.listen(appPort, () => {
     console.log('----------------------------------------------------------------');
     console.log(`Starting Express web-server...`);
