@@ -1,11 +1,10 @@
 /**
- * CRUD module for operations with MongoDB
+ * To be a CRUD module for operations with MongoDB
  */
 const MongoClient = require('mongodb').MongoClient;
 const crypto = require('crypto');
 const databaseUrl = "mongodb://127.0.0.1:27017/";
 const databaseName = "secrets";
-
 
 const connect = (dbUrl) => MongoClient.connect(dbUrl, { useUnifiedTopology: true, useNewUrlParser: true }, function(err, client) {
   if (err){
@@ -17,15 +16,13 @@ const connect = (dbUrl) => MongoClient.connect(dbUrl, { useUnifiedTopology: true
     randomString: crypto.randomBytes(10).toString('hex'),
     randomInt: Math.floor(Math.random() * 1000000)
   }
-  console.log(`Inserting data:\n`, JSON.stringify(toInsert))
   db.collection('secret-data').insertOne(toInsert, (error, result) => {
     if (error){
         console.log(`Fail: \n`, error)
-    } //throw error
+    }
+    console.log(`Inserting data:\n`, JSON.stringify(toInsert))
     console.log(`Success: insertedId: ${result.insertedId}`);
-    console.log('Closing connection to database')
     client.close()
-    console.log("Exit");
   });
 });
 
