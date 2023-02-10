@@ -1,18 +1,37 @@
-const { Connection } = require('mongodb/lib/core');
-
 /**
  * CRUD module for operations with MongoDB
  */
-var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://127.0.0.1:27017/";
+const MongoClient = require('mongodb').MongoClient;
+const crypto = require('crypto');
+const databaseUrl = "mongodb://127.0.0.1:27017/";
+const databaseName = "secrets";
 
-const connect = (dbUrl) => MongoClient.connect(dbUrl, { useUnifiedTopology: true, useNewUrlParser: true }, function(err, db) {
+
+const connect = (dbUrl) => MongoClient.connect(dbUrl, { useUnifiedTopology: true, useNewUrlParser: true }, function(err, client) {
   if (err){
     return console.error(`Unable to connect to the database: ${dbUrl}.\nError stack below:\n`, err)
   }
   console.log("Connected to database: ", dbUrl)
-  process.exit(0);
+  const db = client.db(databaseName)
+  let toInsert = {
+    randomString: crypto.randomBytes(10).toString('hex'),
+    randomInt: Math.floor(Math.random() * 1000000)
+  }
+  console.log(`Inserting data:\n`, JSON.stringify(toInsert))
+  db.collection('secret-data').insertOne(toInsert, (error, result) => {
+    if (error){
+        console.log(`Fail: \n`, error)
+    } //throw error
+    console.log(`Success: insertedId: ${result.insertedId}`);
+    console.log('Closing connection to database')
+    client.close()
+    console.log("Exit");
+  });
 });
 
 // to test
-connect(url)
+int = 0;
+while (int < 5) {
+    connect(databaseUrl)
+    int++;
+}
