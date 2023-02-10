@@ -1,26 +1,18 @@
+const { Connection } = require('mongodb/lib/core');
+
 /**
  * CRUD module for operations with MongoDB
  */
-const { MongoClient } = require('mongodb');
-// new instance of MongoClient from library
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://127.0.0.1:27017/";
 
-// get database connection
-const connect = async (databaseUrl, databaseName) => {
-    const client = new MongoClient(databaseUrl)
-    await client.connect();
-    const db = client.db(databaseName);
-    if (!db || !client ) {
-        return console.log(`ERROR: Can't connect to the URL: ${databaseUrl} DB: ${databaseName}`);
-    }
-    return console.log(`INFO: Successfully connected to URL: ${databaseUrl} DB: ${databaseName}`);
-}
+const connect = (dbUrl) => MongoClient.connect(dbUrl, { useUnifiedTopology: true, useNewUrlParser: true }, function(err, db) {
+  if (err){
+    return console.error(`Unable to connect to the database: ${dbUrl}.\nError stack below:\n`, err)
+  }
+  console.log("Connected to database: ", dbUrl)
+  process.exit(0);
+});
 
-// For testing purposes
-
-// // Connection URL
-// const url = 'mongodb://127.0.0.1:27017';
-// // Database Name
-// const dbName = 'task-manager';
-// const dbName2 = 'task-manager2';
-// connect(url, dbName);
-// connect(url, dbName2);
+// to test
+connect(url)
