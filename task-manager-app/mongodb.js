@@ -20,8 +20,8 @@ const connect = (dbUrl) => MongoClient.connect(dbUrl, { useUnifiedTopology: true
     if (error){
         console.log(`Fail: \n`, error)
     }
-    console.log(`Inserting data:\n`, JSON.stringify(toInsert))
-    console.log(`Success: insertedId: ${result.insertedId}`);
+    console.log(`DocumentToInsert`, JSON.stringify(toInsert))
+    console.log(`InsertedDocument:`,result.ops);
     client.close()
   });
 });

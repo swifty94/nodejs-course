@@ -14,17 +14,46 @@ Connected to database:  mongodb://127.0.0.1:27017/
 Connected to database:  mongodb://127.0.0.1:27017/
 Connected to database:  mongodb://127.0.0.1:27017/
 Connected to database:  mongodb://127.0.0.1:27017/
-Inserting data:
- {"randomString":"01ab272f34b52df2012d","randomInt":997063,"_id":"63e6cefac9b98a2350951fb4"}Success: insertedId: 63e6cefac9b98a2350951fb4
-Inserting data:
- {"randomString":"88c78834c94c800f61bc","randomInt":825306,"_id":"63e6cefac9b98a2350951fb5"}Success: insertedId: 63e6cefac9b98a2350951fb5
-Inserting data:
- {"randomString":"e1a4f7d15ba8493296a7","randomInt":291370,"_id":"63e6cefac9b98a2350951fb6"}Success: insertedId: 63e6cefac9b98a2350951fb6
-Inserting data:
- {"randomString":"433db8ab8abb1865a3c9","randomInt":18472,"_id":"63e6cefac9b98a2350951fb7"} 
-Success: insertedId: 63e6cefac9b98a2350951fb7
-Inserting data:
- {"randomString":"99cb3affe345343812c0","randomInt":774195,"_id":"63e6cefac9b98a2350951fb8"}Success: insertedId: 63e6cefac9b98a2350951fb8
+DocumentToInsert {"randomString":"8cc399403cef313638e0","randomInt":438545,"_id":"63e6d105babe73521829814e"}
+InsertedDocument: [
+  {
+    randomString: '8cc399403cef313638e0',
+    randomInt: 438545,
+    _id: 63e6d105babe73521829814e
+  }
+]
+DocumentToInsert {"randomString":"36f8ea538444c85af854","randomInt":242551,"_id":"63e6d105babe73521829814d"}
+InsertedDocument: [
+  {
+    randomString: '36f8ea538444c85af854',
+    randomInt: 242551,
+    _id: 63e6d105babe73521829814d
+  }
+]
+DocumentToInsert {"randomString":"d726ecb0d5d3a264a3ff","randomInt":642847,"_id":"63e6d105babe73521829814f"}
+InsertedDocument: [
+  {
+    randomString: 'd726ecb0d5d3a264a3ff',
+    randomInt: 642847,
+    _id: 63e6d105babe73521829814f
+  }
+]
+DocumentToInsert {"randomString":"e2a27ad59fcbe95ad2a7","randomInt":441101,"_id":"63e6d105babe735218298150"}
+InsertedDocument: [
+  {
+    randomString: 'e2a27ad59fcbe95ad2a7',
+    randomInt: 441101,
+    _id: 63e6d105babe735218298150
+  }
+]
+DocumentToInsert {"randomString":"8cf84eafcdfea050ba35","randomInt":353045,"_id":"63e6d105babe735218298151"}
+InsertedDocument: [
+  {
+    randomString: '8cf84eafcdfea050ba35',
+    randomInt: 353045,
+    _id: 63e6d105babe735218298151
+  }
+]
 [nodemon] clean exit - waiting for changes before restart
 </pre>
 
