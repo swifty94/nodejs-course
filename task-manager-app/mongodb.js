@@ -10,7 +10,7 @@ const connect = (dbUrl) => MongoClient.connect(dbUrl, { useUnifiedTopology: true
   if (err){
     return console.error(`Unable to connect to the database: ${dbUrl}.\nError stack below:\n`, err)
   }
-  console.log("Connected to database: ", dbUrl)
+  console.log("ConnectionToUrl:: ", dbUrl)
   const db = client.db(databaseName)
   let toInsert = {
     randomString: crypto.randomBytes(10).toString('hex'),
