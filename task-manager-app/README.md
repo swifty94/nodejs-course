@@ -3,58 +3,48 @@ Mongo DB lessons 75-81;
 11.02 - learning/playing with new technologies
 
 <pre>
-\task-manager-app>nodemon mongodb.js
-[nodemon] 2.0.20
-[nodemon] to restart at any time, enter `rs`
-[nodemon] watching path(s): *.*
-[nodemon] watching extensions: js,mjs,json
-[nodemon] starting `node mongodb.js`
-Connected to database:  mongodb://127.0.0.1:27017/
-Connected to database:  mongodb://127.0.0.1:27017/
-Connected to database:  mongodb://127.0.0.1:27017/
-Connected to database:  mongodb://127.0.0.1:27017/
-Connected to database:  mongodb://127.0.0.1:27017/
-DocumentToInsert {"randomString":"8cc399403cef313638e0","randomInt":438545,"_id":"63e6d105babe73521829814e"}
-InsertedDocument: [
+\task-manager-app>node mongodb.js
+dataToInsert {"randomString":"c3a6744e45a9ce8daa35","randomInt":399590}
+dataToInsert {"randomString":"90ff1e67254f38aed9d0","randomInt":416179}
+dataToInsert {"randomString":"ce68f9713985184849b9","randomInt":28503}
+dataToInsert {"randomString":"25ee5ec17127e5e9760a","randomInt":60028}
+dataToInsert {"randomString":"796911cb4f1a13c47379","randomInt":792161}
+insertOneWriteOpResultObject: [
   {
-    randomString: '8cc399403cef313638e0',
-    randomInt: 438545,
-    _id: 63e6d105babe73521829814e
+    randomString: 'c3a6744e45a9ce8daa35',
+    randomInt: 399590,
+    _id: 63eaa21aadd7d82b0c583482
   }
 ]
-DocumentToInsert {"randomString":"36f8ea538444c85af854","randomInt":242551,"_id":"63e6d105babe73521829814d"}
-InsertedDocument: [
+insertOneWriteOpResultObject: [
   {
-    randomString: '36f8ea538444c85af854',
-    randomInt: 242551,
-    _id: 63e6d105babe73521829814d
+    randomString: '90ff1e67254f38aed9d0',
+    randomInt: 416179,
+    _id: 63eaa21aadd7d82b0c583483
   }
 ]
-DocumentToInsert {"randomString":"d726ecb0d5d3a264a3ff","randomInt":642847,"_id":"63e6d105babe73521829814f"}
-InsertedDocument: [
+insertOneWriteOpResultObject: [
   {
-    randomString: 'd726ecb0d5d3a264a3ff',
-    randomInt: 642847,
-    _id: 63e6d105babe73521829814f
+    randomString: 'ce68f9713985184849b9',
+    randomInt: 28503,
+    _id: 63eaa21aadd7d82b0c583484
   }
 ]
-DocumentToInsert {"randomString":"e2a27ad59fcbe95ad2a7","randomInt":441101,"_id":"63e6d105babe735218298150"}
-InsertedDocument: [
+insertOneWriteOpResultObject: [
   {
-    randomString: 'e2a27ad59fcbe95ad2a7',
-    randomInt: 441101,
-    _id: 63e6d105babe735218298150
+    randomString: '25ee5ec17127e5e9760a',
+    randomInt: 60028,
+    _id: 63eaa21aadd7d82b0c583485
   }
 ]
-DocumentToInsert {"randomString":"8cf84eafcdfea050ba35","randomInt":353045,"_id":"63e6d105babe735218298151"}
-InsertedDocument: [
+insertOneWriteOpResultObject: [
   {
-    randomString: '8cf84eafcdfea050ba35',
-    randomInt: 353045,
-    _id: 63e6d105babe735218298151
+    randomString: '796911cb4f1a13c47379',
+    randomInt: 792161,
+    _id: 63eaa21aadd7d82b0c583486
   }
 ]
-[nodemon] clean exit - waiting for changes before restart
+C:\Users\kiril\Documents\LenovoData\Dev\nodejs-course\task-manager-app>
 </pre>
 
 
