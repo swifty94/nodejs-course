@@ -10,6 +10,8 @@ Mongo DB lessons 75-81;
 So far all the calls like insertOne and/or findOne are not properly wrapped to return some data
 Hence, for now, they are commented out and I assume in the further lessons we'll cover that
 
+Below are some examples of calling each method separately with different input parameters according to the lessons tasks and getting the results back.
+
 - Test inserting to users collection
 <pre>
 ~/task-manager-app (master)$ x=1; while [ $x -le 10 ]; do node mongodb.js; printf '\n';x=$(( $x + 1 )); done
