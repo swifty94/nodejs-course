@@ -2,15 +2,16 @@
  * To be a CRUD module for operations with MongoDB
  */
 const MongoClient = require('mongodb').MongoClient;
-const crypto = require('crypto');
 /*
  * Dummy data methods
  */
-const setRandomString = () =>{
-  return crypto.randomBytes(10).toString('hex')
+const setRandomName = () =>{
+  const names = ['Bob', 'John', 'Mary', 'Jane', 'Kate', 'Mike', 'Andrew', 'Nancy', 'Dave', 'Lisa', 'Greg'];
+  const randomIndex = Math.floor(Math.random() * names.length);
+  return names[randomIndex]
 };
-const setRandomInt = () => {
-  return Math.floor(Math.random() * 1000000);
+const setRandomAge = () => {
+  return Math.floor(Math.random() * 80);
 }
 /*
   Temporary methods to insertOne and insertMany to MongoDB
@@ -47,27 +48,27 @@ const insertMultiple = (dbUrl, dbName, collectionName, arrayToInsert) => MongoCl
 });
 
 const databaseUrl = "mongodb://127.0.0.1:27017/";
-const databaseName = "secrets";
-const collectionName = 'secret-data';
+const databaseName = "task-manager";
+const collectionName = 'users';
 /*
 *  to test insertSingle
 */
-let toInsert = {
-  randomString: setRandomString(),
-  randomInt: setRandomInt()
+let userData = {
+  name: setRandomName(),
+  age: setRandomAge()
 }
-insertSingle(databaseUrl, databaseName, collectionName, toInsert)
+insertSingle(databaseUrl, databaseName, collectionName, userData)
 /*
 * to test insertMultiple
  */
 let idx = 0;
 let objArray = [];
 while (idx < 5) {
-  let toInsert = {
-          randomString: setRandomString(),
-          randomInt: setRandomInt()
-        }
-  objArray.push(toInsert);
+  let userData = {
+    name: setRandomName(),
+    age: setRandomAge()
+  }
+  objArray.push(userData);
   idx++;
 }
 insertMultiple(databaseUrl, databaseName, collectionName, objArray)

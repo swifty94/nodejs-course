@@ -1,29 +1,26 @@
 Mongo DB lessons 75-81;
 
-11.02 - learning/playing with new technologies
+14.02 - insertOne and insertMany is learned.
 
 <pre>
 ~\task-manager-app>node mongodb.js
 
-dataToInsert {"randomString":"3157a689464d2dac14da","randomInt":864537}
-
+dataToInsert {"name":"Lisa","age":3}
 
 arrayToInsert [
-  { randomString: 'c73189c32f543c048ee5', randomInt: 274809 },
-  { randomString: 'b670f715e0e8e084d039', randomInt: 996012 },
-  { randomString: 'b30b71f619b2f4e2be61', randomInt: 824896 },
-  { randomString: 'd2e3c231082f32573875', randomInt: 132625 },
-  { randomString: '3a823c3d7416c1d81b2d', randomInt: 981036 } 
+  { name: 'Dave', age: 10 },
+  { name: 'Greg', age: 75 },
+  { name: 'Jane', age: 20 },
+  { name: 'Jane', age: 77 },
+  { name: 'Jane', age: 2 }
 ]
 
-insertSingle -> result: [{"randomString":"3157a689464d2dac14da","randomInt":864537,"_id":"63eaafab2b28a71de06a0496"}]
+insertSingle -> result: [{"name":"Lisa","age":3,"_id":"63eb6dff4824c60a90d14ef2"}]
 
-
-insertMultiple -> result: [{"randomString":"c73189c32f543c048ee5","randomInt":274809,"_id":"63eaafab2b28a71de06a0497"},{"randomString":"b670f715e0e8e084d039","randomInt":996012,"_id":"63eaafab2b28a71de06a0498"},{"randomString":"b30b71f619b2f4e2be61","randomInt":824896,"_id":"63eaafab2b28a71de06a0499"},{"randomString":"d2e3c231082f32573875","randomInt":132625,"_id":"63eaafab2b28a71de06a049a"},{"randomString":"3a823c3d7416c1d81b2d","randomInt":981036,"_id":"63eaafab2b28a71de06a049b"}]
+insertMultiple -> result: [{"name":"Dave","age":10,"_id":"63eb6dff4824c60a90d14ef3"},{"name":"Greg","age":75,"_id":"63eb6dff4824c60a90d14ef4"},{"name":"Jane","age":20,"_id":"63eb6dff4824c60a90d14ef5"},{"name":"Jane","age":77,"_id":"63eb6dff4824c60a90d14ef6"},{"name":"Jane","age":2,"_id":"63eb6dff4824c60a90d14ef7"}]
 
 ~\task-manager-app>
 </pre>
-
 
 // TODO:
 - create a structure of the project
