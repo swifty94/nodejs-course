@@ -18,30 +18,17 @@ const statuses = [true,false];
 /*
   Random data generation methods
 */
-const getRandomValueFromArray = (array) =>{
-  if (typeof array !== 'object') {
-    console.error('Invalid input type for getRandomValueFromArray provided:' + typeof array, '| Must be:object');
-    return null;
-  }
-  const randomIndex = Math.floor(Math.random() * array.length);
-  return array[randomIndex]
-};
-
-const setRandomAge = () => {
-  return Math.floor(Math.random() * 80);
-};
-
 let userObject = {
-  name: getRandomValueFromArray(names),
-  age: setRandomAge()
+  name: names[Math.floor(Math.random() * names.length)],
+  age: Math.floor(Math.random() * 80)
 };
 
 let taskObject = {
-  taskName: getRandomValueFromArray(tasks),
-  status: getRandomValueFromArray(statuses)
+  taskName: tasks[Math.floor(Math.random() * tasks.length)],
+  status: statuses[Math.floor(Math.random() * statuses.length)]
 };
-//console.log('Generated dummy taskObject:', taskObject);
-//console.log('Generated dummy userObject:', userObject);
+console.log('Generated dummy taskObject:', taskObject);
+console.log('Generated dummy userObject:', userObject);
 
 /*
   insertOne
@@ -51,7 +38,7 @@ MongoClient.connect(databaseUrl, { useUnifiedTopology: true, useNewUrlParser: tr
     return console.error(`Unable to connect to the database: ${databaseUrl}.Error stack below:`, err)
   }
   const db = client.db(databaseName)
-  db.collection(tasksCollection).insertOne(taskObject, (error, result) => {
+  db.collection(usersCollection).insertOne(userObject, (error, result) => {
     if (error){
         console.log(`Unable to update collection: ${tasksCollection}`, error)
     }
@@ -81,6 +68,7 @@ MongoClient.connect(databaseUrl,
     });
 });
 */
+
 /*
 
 find (many)
