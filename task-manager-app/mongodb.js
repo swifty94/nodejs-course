@@ -1,6 +1,6 @@
-/**
+/*
  * To be a CRUD module for operations with MongoDB
- */
+*/
 const MongoClient = require('mongodb').MongoClient;
 /*
  * Dummy data methods
@@ -47,20 +47,43 @@ const insertMultiple = (dbUrl, dbName, collectionName, arrayToInsert) => MongoCl
   });
 });
 
+const selectMultiple = (dbUrl, dbName, collectionName, searchObject) => MongoClient.connect(dbUrl, { useUnifiedTopology: true, useNewUrlParser: true }, function(err, client) {
+  if (err){
+    return console.error(`Unable to connect to the database: ${dbUrl}.\nError stack below:\n`, err)
+  }
+  console.log(`\searchObject`, searchObject)
+  const db = client.db(dbName)
+  try {
+    db.collection(collectionName).find(searchObject).toArray((error, result) => {
+      console.log('selectMultiple -> result:', result)
+    })
+  } catch (error) {
+    return console.log('Error in selectMultiple ->\n', error)
+  } finally {
+    //process.exit(0);
+  }
+  });
+
+/*
+ * DB constants
+*/
 const databaseUrl = "mongodb://127.0.0.1:27017/";
 const databaseName = "task-manager";
 const collectionName = 'users';
 /*
 *  to test insertSingle
-*/
+
 let userData = {
   name: setRandomName(),
   age: setRandomAge()
 }
 insertSingle(databaseUrl, databaseName, collectionName, userData)
+
+*/
+
 /*
 * to test insertMultiple
- */
+
 let idx = 0;
 let objArray = [];
 while (idx < 5) {
@@ -72,3 +95,9 @@ while (idx < 5) {
   idx++;
 }
 insertMultiple(databaseUrl, databaseName, collectionName, objArray)
+
+*/
+
+// test selectMultiple
+
+// selectMultiple(databaseUrl, databaseName, collectionName, {name: 'Jane'});
