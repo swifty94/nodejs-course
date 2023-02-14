@@ -7,6 +7,9 @@ Mongo DB lessons 75-81;
   - find
   - findOne
 
+So far all the calls like insertOne and/or findOne are not properly wrapped to return some data
+Hence, for now, they are commented out and I assume in the further lessons we'll cover that
+
 - Test inserting to users collection
 <pre>
 ~/task-manager-app (master)$ x=1; while [ $x -le 10 ]; do node mongodb.js; printf '\n';x=$(( $x + 1 )); done
