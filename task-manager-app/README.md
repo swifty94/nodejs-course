@@ -82,3 +82,13 @@ insertSingle -> result: [{"taskName":"Wash the car","status":true,"_id":"63ebe2f
 Searching for uncompleted tasks
 find -> result: [{"_id":"63ebe2e7a01c014130b43d4b","taskName":"Walk the dog","status":false},{"_id":"63ebe2e88fba37379ca71efb","taskName":"Wash the car","status":false},{"_id":"63ebe2eed63f2b05fcdf7cb5","taskName":"Walk the dog","status":false}]
 </pre>
+
+- Search for users younger than 30 years old
+<pre>
+db.collection(usersCollection).find({age:{$lt:30}}).toArray()
+</pre>
+<pre>
+~/task-manager-app (master)$ node mongodb.js
+Searching for users younger 30 years old
+find -> result: [{"_id":"63ebe2453a2e533cb874a0f5","name":"Mary","age":25},{"_id":"63ebe2462a1ac549f41ba085","name":"Lisa","age":19},{"_id":"63ebe249bf6a23518cdadf0e","name":"Kate","age":15}]
+</pre>
