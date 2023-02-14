@@ -1,28 +1,84 @@
 Mongo DB lessons 75-81;
 
-14.02 - insertOne and insertMany is learned.
+14.02
+- Already worked with:
+  - insertOne
+  - insertMany
+  - find
+  - findOne
 
+- Test inserting to users collection
 <pre>
-~\task-manager-app>node mongodb.js
+~/task-manager-app (master)$ x=1; while [ $x -le 10 ]; do node mongodb.js; printf '\n';x=$(( $x + 1 )); done
 
-dataToInsert {"name":"Lisa","age":3}
+Generated dummy userObject: { name: 'Mary', age: 69 }
+insertSingle -> result: [{"name":"Mary","age":69,"_id":"63ebe23f130127362cacc81f"}]
 
-arrayToInsert [
-  { name: 'Dave', age: 10 },
-  { name: 'Greg', age: 75 },
-  { name: 'Jane', age: 20 },
-  { name: 'Jane', age: 77 },
-  { name: 'Jane', age: 2 }
-]
+Generated dummy userObject: { name: 'Jane', age: 70 }
+insertSingle -> result: [{"name":"Jane","age":70,"_id":"63ebe240e8dc383ca0607acb"}]
 
-insertSingle -> result: [{"name":"Lisa","age":3,"_id":"63eb6dff4824c60a90d14ef2"}]
+Generated dummy userObject: { name: 'Dave', age: 36 }
+insertSingle -> result: [{"name":"Dave","age":36,"_id":"63ebe242017ea834a023ec6f"}]
 
-insertMultiple -> result: [{"name":"Dave","age":10,"_id":"63eb6dff4824c60a90d14ef3"},{"name":"Greg","age":75,"_id":"63eb6dff4824c60a90d14ef4"},{"name":"Jane","age":20,"_id":"63eb6dff4824c60a90d14ef5"},{"name":"Jane","age":77,"_id":"63eb6dff4824c60a90d14ef6"},{"name":"Jane","age":2,"_id":"63eb6dff4824c60a90d14ef7"}]
+Generated dummy userObject: { name: 'Lisa', age: 50 }
+insertSingle -> result: [{"name":"Lisa","age":50,"_id":"63ebe24322eb673e3cf361c7"}]
 
-~\task-manager-app>
+Generated dummy userObject: { name: 'Mary', age: 25 }
+insertSingle -> result: [{"name":"Mary","age":25,"_id":"63ebe2453a2e533cb874a0f5"}]
+
+Generated dummy userObject: { name: 'Lisa', age: 19 }
+insertSingle -> result: [{"name":"Lisa","age":19,"_id":"63ebe2462a1ac549f41ba085"}]
+
+Generated dummy userObject: { name: 'Mary', age: 62 }
+insertSingle -> result: [{"name":"Mary","age":62,"_id":"63ebe247970dcd116c631e6f"}]
+
+Generated dummy userObject: { name: 'Kate', age: 15 }
+insertSingle -> result: [{"name":"Kate","age":15,"_id":"63ebe249bf6a23518cdadf0e"}]
+
+Generated dummy userObject: { name: 'Kate', age: 63 }
+insertSingle -> result: [{"name":"Kate","age":63,"_id":"63ebe24a8cc4ff4dbc5d88dc"}]
+
+Generated dummy userObject: { name: 'Andrew', age: 63 }
+insertSingle -> result: [{"name":"Andrew","age":63,"_id":"63ebe24c64c85551b8675795"}]
 </pre>
 
-// TODO:
-- create a structure of the project
-- create installation/usage documentation
-- screenshots of results
+- Test inserting to tasks collection
+<pre>
+~/task-manager-app (master)$ x=1; while [ $x -le 10 ]; do node mongodb.js; printf '\n';x=$(( $x + 1 )); done
+Generated dummy taskObject: { taskName: 'Walk the dog', status: false }
+insertSingle -> result: [{"taskName":"Walk the dog","status":false,"_id":"63ebe2e7a01c014130b43d4b"}]
+
+Generated dummy taskObject: { taskName: 'Wash the car', status: false }
+insertSingle -> result: [{"taskName":"Wash the car","status":false,"_id":"63ebe2e88fba37379ca71efb"}]
+
+Generated dummy taskObject: { taskName: 'Groceries', status: true }
+insertSingle -> result: [{"taskName":"Groceries","status":true,"_id":"63ebe2eab0802d34c05ec685"}]
+
+Generated dummy taskObject: { taskName: 'Walk the dog', status: true }
+insertSingle -> result: [{"taskName":"Walk the dog","status":true,"_id":"63ebe2eb658b20518cca4294"}]
+
+Generated dummy taskObject: { taskName: 'Send email to boss', status: true }
+insertSingle -> result: [{"taskName":"Send email to boss","status":true,"_id":"63ebe2ed1fffbc14045500c3"}]
+
+Generated dummy taskObject: { taskName: 'Walk the dog', status: false }
+insertSingle -> result: [{"taskName":"Walk the dog","status":false,"_id":"63ebe2eed63f2b05fcdf7cb5"}]
+
+Generated dummy taskObject: { taskName: 'Walk the dog', status: true }
+insertSingle -> result: [{"taskName":"Walk the dog","status":true,"_id":"63ebe2ef8836582578c969e0"}]
+
+Generated dummy taskObject: { taskName: 'Cook dinner', status: true }
+insertSingle -> result: [{"taskName":"Cook dinner","status":true,"_id":"63ebe2f1571f37471058cee5"}]
+
+Generated dummy taskObject: { taskName: 'Groceries', status: true }
+insertSingle -> result: [{"taskName":"Groceries","status":true,"_id":"63ebe2f25f4d1f0814b0e4c6"}]
+
+Generated dummy taskObject: { taskName: 'Wash the car', status: true }
+insertSingle -> result: [{"taskName":"Wash the car","status":true,"_id":"63ebe2f4bf89754d50394aef"}]
+</pre>
+
+- Search for uncompleted tasks
+<pre>
+~/task-manager-app (master)$ node mongodb.js
+Searching for uncompleted tasks
+find -> result: [{"_id":"63ebe2e7a01c014130b43d4b","taskName":"Walk the dog","status":false},{"_id":"63ebe2e88fba37379ca71efb","taskName":"Wash the car","status":false},{"_id":"63ebe2eed63f2b05fcdf7cb5","taskName":"Walk the dog","status":false}]
+</pre>

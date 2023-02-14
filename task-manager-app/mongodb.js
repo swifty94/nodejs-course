@@ -3,101 +3,117 @@
 */
 const MongoClient = require('mongodb').MongoClient;
 /*
- * Dummy data methods
- */
-const setRandomName = () =>{
-  const names = ['Bob', 'John', 'Mary', 'Jane', 'Kate', 'Mike', 'Andrew', 'Nancy', 'Dave', 'Lisa', 'Greg'];
-  const randomIndex = Math.floor(Math.random() * names.length);
-  return names[randomIndex]
-};
-const setRandomAge = () => {
-  return Math.floor(Math.random() * 80);
-}
-/*
-  Temporary methods to insertOne and insertMany to MongoDB
-  TODO: improve code quality
-*/
-const insertSingle = (dbUrl, dbName, collectionName, dataToInsert) => MongoClient.connect(dbUrl, { useUnifiedTopology: true, useNewUrlParser: true }, function(err, client) {
-  if (err){
-    return console.error(`\nUnable to connect to the database: ${dbUrl}.\nError stack below:\n`, err)
-  }
-  console.log(`\ndataToInsert`, JSON.stringify(dataToInsert)+"\n")
-  const db = client.db(dbName)
-  db.collection(collectionName).insertOne(dataToInsert, (error, result) => {
-    if (error){
-        console.log(`Unable to update DB ${dbName}: Collection: ${collectionName} \n`, error)
-    }
-    console.log(`\ninsertSingle -> result:`, JSON.stringify(result.ops)+"\n");
-    client.close()
-  });
-});
-
-const insertMultiple = (dbUrl, dbName, collectionName, arrayToInsert) => MongoClient.connect(dbUrl, { useUnifiedTopology: true, useNewUrlParser: true }, function(err, client) {
-  if (err){
-    return console.error(`Unable to connect to the database: ${dbUrl}.\nError stack below:\n`, err)
-  }
-  console.log(`\narrayToInsert`, arrayToInsert)
-  const db = client.db(dbName)
-  db.collection(collectionName).insertMany(arrayToInsert, (error, result) => {
-    if (error){
-        console.log(`Unable to update DB ${dbName}: Collection: ${collectionName} \n`, error)
-    }
-    console.log(`\ninsertMultiple -> result:`, JSON.stringify(result.ops)+"\n");
-    client.close()
-  });
-});
-
-const selectMultiple = (dbUrl, dbName, collectionName, searchObject) => MongoClient.connect(dbUrl, { useUnifiedTopology: true, useNewUrlParser: true }, function(err, client) {
-  if (err){
-    return console.error(`Unable to connect to the database: ${dbUrl}.\nError stack below:\n`, err)
-  }
-  console.log(`\searchObject`, searchObject)
-  const db = client.db(dbName)
-  try {
-    db.collection(collectionName).find(searchObject).toArray((error, result) => {
-      console.log('selectMultiple -> result:', result)
-    })
-  } catch (error) {
-    return console.log('Error in selectMultiple ->\n', error)
-  } finally {
-    //process.exit(0);
-  }
-  });
-
-/*
  * DB constants
 */
 const databaseUrl = "mongodb://127.0.0.1:27017/";
 const databaseName = "task-manager";
-const collectionName = 'users';
+const usersCollection = 'users';
+const tasksCollection = 'tasks';
 /*
-*  to test insertSingle
-
-let userData = {
-  name: setRandomName(),
-  age: setRandomAge()
-}
-insertSingle(databaseUrl, databaseName, collectionName, userData)
-
+ * Dummy data constants
+ */
+const names = ['Bob', 'John', 'Mary', 'Jane', 'Kate', 'Mike', 'Andrew', 'Nancy', 'Dave', 'Lisa', 'Greg'];
+const tasks = ['Homework','Walk the dog','Groceries','Go to gym','Wash the car','Cook dinner','Send email to boss'];
+const statuses = [true,false];
+/*
+  Random data generation methods
 */
-
-/*
-* to test insertMultiple
-
-let idx = 0;
-let objArray = [];
-while (idx < 5) {
-  let userData = {
-    name: setRandomName(),
-    age: setRandomAge()
+const getRandomValueFromArray = (array) =>{
+  if (typeof array !== 'object') {
+    console.error('Invalid input type for getRandomValueFromArray provided:' + typeof array, '| Must be:object');
+    return null;
   }
-  objArray.push(userData);
-  idx++;
-}
-insertMultiple(databaseUrl, databaseName, collectionName, objArray)
+  const randomIndex = Math.floor(Math.random() * array.length);
+  return array[randomIndex]
+};
 
+const setRandomAge = () => {
+  return Math.floor(Math.random() * 80);
+};
+
+let userObject = {
+  name: getRandomValueFromArray(names),
+  age: setRandomAge()
+};
+
+let taskObject = {
+  taskName: getRandomValueFromArray(tasks),
+  status: getRandomValueFromArray(statuses)
+};
+//console.log('Generated dummy taskObject:', taskObject);
+//console.log('Generated dummy userObject:', userObject);
+
+/*
+  insertOne
+
+MongoClient.connect(databaseUrl, { useUnifiedTopology: true, useNewUrlParser: true }, function(err, client) {
+  if (err){
+    return console.error(`Unable to connect to the database: ${databaseUrl}.Error stack below:`, err)
+  }
+  const db = client.db(databaseName)
+  db.collection(tasksCollection).insertOne(taskObject, (error, result) => {
+    if (error){
+        console.log(`Unable to update collection: ${tasksCollection}`, error)
+    }
+    console.log(`insertOne -> result:`, JSON.stringify(result.ops)+"");
+    client.close()
+  });
+});
 */
 
-// test selectMultiple
+/*
+  insertMany
 
-// selectMultiple(databaseUrl, databaseName, collectionName, {name: 'Jane'});
+MongoClient.connect(databaseUrl,
+  { useUnifiedTopology: true, useNewUrlParser: true },
+  function(err, client) {
+    if (err){
+      return console.error(`Unable to connect to the database: ${dbUrl}.\nError stack below:\n`, err)
+    }
+    console.log(`\narrayToInsert`, arrayToInsert)
+    const db = client.db(databaseName)
+    db.collection(collectionName).insertMany(arrayToInsert, (error, result) => {
+      if (error){
+        console.log(`Unable to update collection: ${collectionName} \n`, error)
+      }
+      console.log(`\insertMany -> result:`, JSON.stringify(result.ops)+"\n");
+      client.close()
+    });
+});
+*/
+
+/*
+
+  find (many)
+
+console.log(`Searching for uncompleted tasks`)
+MongoClient.connect(databaseUrl, { useUnifiedTopology: true, useNewUrlParser: true }, function(err, client) {
+  if (err){
+    return console.error(err)
+  }
+  const db = client.db(databaseName)
+  db.collection(tasksCollection).find({status:false}).toArray((error, result) => {
+    if (error) {
+      return console.error(`Error in find:`, error)
+    }
+    return console.log('find -> result:', JSON.stringify(result));
+    })
+  });
+*/
+/*
+  findOne
+
+MongoClient.connect(databaseUrl, { useUnifiedTopology: true, useNewUrlParser: true }, function(err, client) {
+  if (err){
+    return console.error(`Unable to connect to the database: ${databaseUrl}.\nError stack below:\n`, err)
+  }
+  const db = client.db(databaseName)
+  db.collection(usersCollection).findOne({name:'Mary'}, (error, result) => {
+    if (error) {
+      return console.log('Error in findOne ->\n', error)
+    }
+    return console.log('find -> result:', result);
+  })
+});
+
+*/
