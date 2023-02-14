@@ -81,25 +81,23 @@ MongoClient.connect(databaseUrl,
     });
 });
 */
-
 /*
 
-  find (many)
-*/
-console.log(`Searching for users younger 30 years old`)
+find (many)
+
 MongoClient.connect(databaseUrl, { useUnifiedTopology: true, useNewUrlParser: true }, function(err, client) {
   if (err){
     return console.error(err)
   }
   const db = client.db(databaseName)
-  db.collection(usersCollection).find({age:{$lt:30}}).toArray((error, result) => {
+  db.collection(usersCollection).find({}).toArray((error, result) => {
     if (error) {
       return console.error(`Error in find:`, error)
     }
     return console.log('find -> result:', JSON.stringify(result));
     })
   });
-
+*/
 /*
   findOne
 
