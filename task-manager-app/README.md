@@ -1,11 +1,10 @@
 Mongo DB lessons 75-81;
 
-14.02
+16.02
 - Already worked with:
-  - insertOne
-  - insertMany
-  - find
-  - findOne
+  - insertOne + insertMany
+  - findOne + find
+  - updateOne + updateMany
 
 So far all the calls like insertOne and/or findOne are not properly wrapped to return some data
 Hence, for now, they are commented out and I assume in the further lessons we'll cover that
@@ -97,3 +96,6 @@ db.collection(usersCollection).find({age:{$lt:30}}).toArray()
 Searching for users younger 30 years old
 find -> result: [{"_id":"63ebe2453a2e533cb874a0f5","name":"Mary","age":25},{"_id":"63ebe2462a1ac549f41ba085","name":"Lisa","age":19},{"_id":"63ebe249bf6a23518cdadf0e","name":"Kate","age":15}]
 </pre>
+
+- Update incomplete tasks (status-false) to true (back and forth)
+<>

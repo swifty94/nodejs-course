@@ -27,8 +27,8 @@ let taskObject = {
   taskName: tasks[Math.floor(Math.random() * tasks.length)],
   status: statuses[Math.floor(Math.random() * statuses.length)]
 };
-console.log('Generated dummy taskObject:', taskObject);
-console.log('Generated dummy userObject:', userObject);
+//console.log('Generated dummy taskObject:', taskObject);
+//console.log('Generated dummy userObject:', userObject);
 
 /*
   insertOne
@@ -100,6 +100,27 @@ MongoClient.connect(databaseUrl, { useUnifiedTopology: true, useNewUrlParser: tr
     }
     return console.log('find -> result:', result);
   })
+});
+
+*/
+
+/**
+ * updateMany
+
+MongoClient.connect(databaseUrl, { useUnifiedTopology: true, useNewUrlParser: true }, function(err, client) {
+  if (err){
+    return console.error(`Unable to connect to the database: ${databaseUrl}.\nError stack below:\n`, err)
+  }
+  const db = client.db(databaseName)
+  db.collection(tasksCollection).updateMany({
+    status: false
+  }, {
+    $set: {status:true}
+  }).then((result) => {
+    console.log('Updated records:',result.modifiedCount);
+  }).catch((error) => {
+    console.error('Error:',error);
+  });
 });
 
 */
