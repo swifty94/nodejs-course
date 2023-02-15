@@ -127,7 +127,6 @@ MongoClient.connect(databaseUrl, { useUnifiedTopology: true, useNewUrlParser: tr
 
 /**
  *  deleteMany
- */
 
 MongoClient.connect(databaseUrl, { useUnifiedTopology: true, useNewUrlParser: true }, function(err, client) {
   if (err){
@@ -142,3 +141,5 @@ MongoClient.connect(databaseUrl, { useUnifiedTopology: true, useNewUrlParser: tr
     console.error('Error:',error);
   });
 });
+
+*/
