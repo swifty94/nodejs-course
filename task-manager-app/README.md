@@ -5,6 +5,7 @@ Mongo DB lessons 75-81;
   - insertOne + insertMany
   - findOne + find
   - updateOne + updateMany
+  - deleteOne + deleteMany
 
 So far all the calls like insertOne and/or findOne are not properly wrapped to return some data
 Hence, for now, they are commented out and I assume in the further lessons we'll cover that
@@ -98,4 +99,55 @@ find -> result: [{"_id":"63ebe2453a2e533cb874a0f5","name":"Mary","age":25},{"_id
 </pre>
 
 - Update incomplete tasks (status-false) to true (back and forth)
-<>
+<pre>
+MongoClient.connect(databaseUrl, { useUnifiedTopology: true, useNewUrlParser: true }, function(err, client) {
+  if (err){
+    return console.error(`Unable to connect to the database: ${databaseUrl}.\nError stack below:\n`, err)
+  }
+  const db = client.db(databaseName)
+  db.collection(tasksCollection).updateMany({
+    status: false
+  }, {
+    $set: {status:true}
+  }).then((result) => {
+    console.log('Updated records:',result.modifiedCount);
+  }).catch((error) => {
+    console.error('Error:',error);
+  });
+});
+
+[nodemon] restarting due to changes...
+[nodemon] starting `node mongodb.js`
+Updated records: 0
+[nodemon] restarting due to changes...
+[nodemon] starting `node mongodb.js`
+Updated records: 30
+[nodemon] restarting due to changes...
+[nodemon] starting `node mongodb.js`
+Updated records: 0
+</pre>
+
+- Delete from collection
+<pre>
+MongoClient.connect(databaseUrl, { useUnifiedTopology: true, useNewUrlParser: true }, function(err, client) {
+  if (err){
+    return console.error(`Unable to connect to the database: ${databaseUrl}.\nError stack below:\n`, err)
+  }
+  const db = client.db(databaseName)
+  db.collection(usersCollection).deleteMany({
+    age:{$gt:40}
+  }).then((result) => {
+    console.log('Removed users older than 40 years:',result.deletedCount);
+  }).catch((error) => {
+    console.error('Error:',error);
+  });
+});
+
+~/task-manager-app (master)$ nodemon mongodb.js
+[nodemon] 2.0.20
+[nodemon] to restart at any time, enter `rs`
+[nodemon] watching path(s): *.*
+[nodemon] watching extensions: js,mjs,json
+[nodemon] starting `node mongodb.js`
+Removed users older than 40 years: 15
+</pre>

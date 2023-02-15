@@ -124,3 +124,21 @@ MongoClient.connect(databaseUrl, { useUnifiedTopology: true, useNewUrlParser: tr
 });
 
 */
+
+/**
+ *  deleteMany
+ */
+
+MongoClient.connect(databaseUrl, { useUnifiedTopology: true, useNewUrlParser: true }, function(err, client) {
+  if (err){
+    return console.error(`Unable to connect to the database: ${databaseUrl}.\nError stack below:\n`, err)
+  }
+  const db = client.db(databaseName)
+  db.collection(usersCollection).deleteMany({
+    age:{$gt:40}
+  }).then((result) => {
+    console.log('Removed users older than 40 years:',result.deletedCount);
+  }).catch((error) => {
+    console.error('Error:',error);
+  });
+});
