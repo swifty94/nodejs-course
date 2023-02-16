@@ -15,6 +15,7 @@ app.post('/users', (req, res) => {
             res.send({'Response': `User created: ${user.name}`})
         }).catch((error) => {
             console.log('Error while saving to DB: ',error.message);
+            res.status(400)
             res.send({'Error': `${error.message}`})
         });
 });
