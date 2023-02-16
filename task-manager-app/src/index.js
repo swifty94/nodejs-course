@@ -19,6 +19,27 @@ app.post('/users', (req, res) => {
         });
 });
 
+app.get('/users', (req, res) => {
+    User.find({}).then((users) => {
+        res.send(users);
+    }).catch((error) => {
+        res.status(500).send();
+    });
+})
+
+
+app.get('/users/:id', (req, res) => {
+    const _id = req.params.id;
+    User.findById(_id).then((user) => {
+        if (!user){
+            res.status(404).send();
+        }
+        console.log(`ID ${_id} matched: `, user)
+        res.send(user);
+    }).catch((error) => {
+        res.status(500).send();
+    });
+})
 
 app.post('/tasks', (req, res) => {
     const task = new Task(req.body);
@@ -31,6 +52,28 @@ app.post('/tasks', (req, res) => {
             res.status(400).send({'Error': error.message})
         });
 });
+
+app.get('/tasks', (req, res) => {
+    Task.find({}).then((task) => {
+        res.send(task);
+    }).catch((error) => {
+        res.status(500).send();
+    });
+})
+
+
+app.get('/tasks/:id', (req, res) => {
+    const _id = req.params.id;
+    Task.findById(_id).then((task) => {
+        if (!task){
+            res.status(404).send();
+        }
+        console.log(`ID ${_id} matched: `, task)
+        res.send(task);
+    }).catch((error) => {
+        res.status(500).send();
+    });
+})
 
 app.listen(port, () => {
     console.log(`App listening on ${port}`);
