@@ -1,9 +1,6 @@
 const mongoose = require('mongoose');
-const { jString } = require('../utils/helper');
-const helper = require('../utils/helper');
-
+const { jString, userObject, taskObject } = require('../utils/helper');
 // creating data model for MongoDB
-
 const User = mongoose.model('User',{
     name: {
         type: String
@@ -21,22 +18,13 @@ const Task = mongoose.model('Task',{
         type: Boolean
     }
 });
-
-
-// create some random user and task related data
-
-console.log('Export of taskObject from helper:', helper.taskObject);
-console.log('Export of userObject from helper:', helper.userObject);
-
-const randomTask = new Task(helper.taskObject);
-const randomUser = new User(helper.userObject);
-
-console.log('new Task() object:', jString(randomTask));
-console.log('new User() object:', jString(randomUser));
-
+// create some random user and task related data models for Mongoose
+const randomTask = new Task(taskObject);
+const randomUser = new User(userObject);
+console.log('new Task() model:', jString(randomTask));
+console.log('new User() model:', jString(randomUser));
 
 // insert into MongoDB using Mongoose Promise
-
 mongoose.set('strictQuery', true);
 mongoose.connect('mongodb://127.0.0.1:27017/task-manager-api').then(() => {
     randomTask.save().then(() => {
