@@ -44,14 +44,14 @@ const User = mongoose.model('User',{
 });
 
 const Task = mongoose.model('Task',{
-    taskName: {
+    description: {
         type: String,
         required: true,
         trim: true
     },
-    status: {
+    completed: {
         type: Boolean,
-        required: true,
+        required: false,
         default: false
     }
 });

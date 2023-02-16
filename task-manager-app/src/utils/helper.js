@@ -2,7 +2,7 @@
  * Dummy data constants
  */
 const names = ['Bob', 'John', 'Mary', 'Jane', 'Kate', 'Mike', 'Andrew', 'Nancy', 'Dave', 'Lisa', 'Greg'];
-const passwords = ['ashkh12381', 'zxa19a9s12', 'zjxadas1028', 'ijg81237', 'kasnd1278', 'lqmx', 'mbxc638', ',mnasgei127'];
+const passwords = ['ashkh12381', 'zxa19a9s12', 'zjxadas1028', '1assd', 'kasnd1278', 'password', 'mbxc638', ',mnasgei127'];
 const emails = ['bob@email.com', 'jo11@website.com', 'mjjj@mongo.js', 'jane@gmail.com', 'mnzx12@lol.com', '2123@lol.com'];
 const tasks = ['Homework', 'Walk the dog', 'Groceries', 'Go to gym', 'Wash the car', 'Cook dinner', 'Send email to boss'];
 const statuses = [true,false];
@@ -17,8 +17,8 @@ const userObject = {
 };
 
 const taskObject = {
-  taskName: tasks[Math.floor(Math.random() * tasks.length)],
-  status: statuses[Math.floor(Math.random() * statuses.length)]
+  description: tasks[Math.floor(Math.random() * tasks.length)],
+  completed: statuses[Math.floor(Math.random() * statuses.length)]
 };
 
 const jString = (object) => {
