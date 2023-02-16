@@ -7,19 +7,34 @@ const User = mongoose.model('User',{
     name: {
         type: String,
         required: true,
+        trim: true,
     },
     email: {
         type: String,
         required: true,
+        trim: true,
+        lowercase: true,
         validate(value) {
             if (!validator.isEmail(value)) {
                 throw new Error(value);
             }
         }
     },
+    password: {
+        type: String,
+        required: true,
+        trim: true,
+        minLength: 6,
+        validate(value) {
+            if (value === 'password') {
+                throw new Error('Password cannot be `password` ');
+            }
+        }
+    },
     age: {
         type: Number,
         required: true,
+        default: 1,
         validate(value) {
             if (value <= 0){
                 throw new Error(value);
@@ -31,11 +46,13 @@ const User = mongoose.model('User',{
 const Task = mongoose.model('Task',{
     taskName: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     status: {
         type: Boolean,
-        required: true
+        required: true,
+        default: false
     }
 });
 // create some random user and task related data models for Mongoose

@@ -2,6 +2,7 @@
  * Dummy data constants
  */
 const names = ['Bob', 'John', 'Mary', 'Jane', 'Kate', 'Mike', 'Andrew', 'Nancy', 'Dave', 'Lisa', 'Greg'];
+const passwords = ['ashkh12381', 'zxa19a9s12', 'zjxadas1028', 'ijg81237', 'kasnd1278', 'lqmxuu172', 'mbxc638', ',mnasgei127'];
 const emails = ['bob@email.com', 'jo11@website.com', 'mjjj@mongo.js', 'jane@gmail.com', 'mnzx12@lol.com', '2123@lol.com'];
 const tasks = ['Homework', 'Walk the dog', 'Groceries', 'Go to gym', 'Wash the car', 'Cook dinner', 'Send email to boss'];
 const statuses = [true,false];
@@ -11,6 +12,7 @@ const statuses = [true,false];
 const userObject = {
   name: names[Math.floor(Math.random() * names.length)],
   email: emails[Math.floor(Math.random() * emails.length)],
+  password: passwords[Math.floor(Math.random() * passwords.length)],
   age: Math.floor(Math.random() * 80)
 };
 
