@@ -12,10 +12,23 @@ app.post('/users', (req, res) => {
     console.log('new User model created:', JSON.stringify(req.body));
     user.save().then(() => {
             console.log('new User saved to DB:', JSON.stringify(user));
-            res.send({'Response': `User created: ${user.name}`})
+            res.status(201).send({'New user': user})
         }).catch((error) => {
             console.log('Error while saving to DB: ',error.message);
-            res.status(400).send({'Response': `Error while saving to DB: ${error.message}`})
+            res.status(400).send({'Error': error.message})
+        });
+});
+
+
+app.post('/tasks', (req, res) => {
+    const task = new Task(req.body);
+    console.log('new Task model created:', JSON.stringify(req.body));
+    task.save().then(() => {
+            console.log('new Task saved to DB:', JSON.stringify(task));
+            res.status(201).send({'New task': task})
+        }).catch((error) => {
+            console.log('Error while saving to DB: ',error.message);
+            res.status(400).send({'Error': error.message})
         });
 });
 
