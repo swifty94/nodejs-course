@@ -1,6 +1,6 @@
 - 16.02
 
-Playing with Mongoose library
+Playing with Mongoose library (currently at lesson 85)
 
 <pre>
 ~ /task-manager-app (master)$
