@@ -10,27 +10,6 @@ const databaseName = "task-manager";
 const usersCollection = 'users';
 const tasksCollection = 'tasks';
 /*
- * Dummy data constants
- */
-const names = ['Bob', 'John', 'Mary', 'Jane', 'Kate', 'Mike', 'Andrew', 'Nancy', 'Dave', 'Lisa', 'Greg'];
-const tasks = ['Homework','Walk the dog','Groceries','Go to gym','Wash the car','Cook dinner','Send email to boss'];
-const statuses = [true,false];
-/*
-  Random data generation methods
-*/
-let userObject = {
-  name: names[Math.floor(Math.random() * names.length)],
-  age: Math.floor(Math.random() * 80)
-};
-
-let taskObject = {
-  taskName: tasks[Math.floor(Math.random() * tasks.length)],
-  status: statuses[Math.floor(Math.random() * statuses.length)]
-};
-//console.log('Generated dummy taskObject:', taskObject);
-//console.log('Generated dummy userObject:', userObject);
-
-/*
   insertOne
 
 MongoClient.connect(databaseUrl, { useUnifiedTopology: true, useNewUrlParser: true }, function(err, client) {
