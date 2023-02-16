@@ -57,7 +57,7 @@ app.get('/tasks', (req, res) => {
     Task.find({}).then((task) => {
         res.send(task);
     }).catch((error) => {
-        res.status(500).send();
+        res.status(500).send({'Error': error.message});
     });
 })
 
@@ -71,7 +71,8 @@ app.get('/tasks/:id', (req, res) => {
         console.log(`ID ${_id} matched: `, task)
         res.send(task);
     }).catch((error) => {
-        res.status(500).send();
+
+        res.status(500).send({'Error':`ID ${_id} not found`});
     });
 })
 
