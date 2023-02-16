@@ -26,7 +26,7 @@ const User = mongoose.model('User',{
         trim: true,
         minLength: 6,
         validate(value) {
-            if (value === 'password') {
+            if (value.includes('password')) {
                 throw new Error('Password cannot be `password` ');
             }
         }
