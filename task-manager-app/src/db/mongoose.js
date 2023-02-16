@@ -1,21 +1,41 @@
 const mongoose = require('mongoose');
 const { jString, userObject, taskObject } = require('../utils/helper');
+const validator = require('validator');
+
 // creating data model for MongoDB
 const User = mongoose.model('User',{
     name: {
-        type: String
+        type: String,
+        required: true,
+    },
+    email: {
+        type: String,
+        required: true,
+        validate(value) {
+            if (!validator.isEmail(value)) {
+                throw new Error(value);
+            }
+        }
     },
     age: {
-        type: Number
+        type: Number,
+        required: true,
+        validate(value) {
+            if (value <= 0){
+                throw new Error(value);
+            }
+        }
     }
 });
 
 const Task = mongoose.model('Task',{
     taskName: {
-        type: String
+        type: String,
+        required: true
     },
     status: {
-        type: Boolean
+        type: Boolean,
+        required: true
     }
 });
 // create some random user and task related data models for Mongoose
