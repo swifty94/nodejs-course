@@ -5,9 +5,14 @@ const Task = require('./models/task');
 const User = require('./models/user');
 const HOST = os.hostname();
 const _PORT = process.env.PORT || 3000;
-
+/*
+ * Initialize the express server
+*/
 const app = express();
 app.use(express.json());
+/*
+ * Users routes
+*/
 app.post('/users', async (req, res) => {
     const user = new User(req.body);
     try {
@@ -44,6 +49,20 @@ app.get('/users/:id', async (req, res) => {
     }
 })
 
+app.patch('/users/:id', async (req, res) => {
+    try {
+        const user = await User.findByIdAndUpdate(req.params.id, req.body, {new: true, runValidators: true});
+        if (!user) {
+            return res.status(404).send();
+        }
+        return res.send(user);
+    } catch (error) {
+        console.log('Error:',error.message);
+    }
+});
+/*
+ * Tasks routes
+*/
 app.post('/tasks', async (req, res) => {
     try {
         const task = new Task(req.body);
@@ -79,6 +98,20 @@ app.get('/tasks/:id', async (req, res) => {
     }
 })
 
+app.patch('/tasks/:id', async (req, res) => {
+    try {
+        const task = await Task.findByIdAndUpdate(req.params.id, req.body, {new: true, runValidators: true});
+        if (!task) {
+            return res.status(404).send();
+        }
+        return res.send(task);
+    } catch (error) {
+        console.log('Error:',error.message);
+    }
+});
+/*
+ * Catch-all route
+*/
 app.get('*', (req, res) => {
     const uriScheme = [];
     app._router.stack.forEach(function(r){
