@@ -23,7 +23,6 @@ app.post('/users', async (req, res) => {
         return res.status(400).send({'Error:': error.message});
     }
 });
-
 app.get('/users', async (req, res) => {
     try {
         const users = await User.find({});
@@ -33,8 +32,6 @@ app.get('/users', async (req, res) => {
         return res.status(400).send({'Error:': error.message});
     }
 })
-
-
 app.get('/users/:id', async (req, res) => {
     try {
         const _id = req.params.id;
@@ -48,7 +45,6 @@ app.get('/users/:id', async (req, res) => {
         return res.status(500).send('Internal Server Error');
     }
 })
-
 app.patch('/users/:id', async (req, res) => {
     try {
         const isAllowedUpdate = Object.keys(req.body).every((update) => ['name','age','password','email',].includes(update));
@@ -77,7 +73,6 @@ app.post('/tasks', async (req, res) => {
         return res.status(400).send({'Error': error});
     }
 });
-
 app.get('/tasks', async (req, res) => {
     try {
         const task = await Task.find({});
@@ -86,8 +81,6 @@ app.get('/tasks', async (req, res) => {
         return res.status(500).send({'Error': error});
     }
 })
-
-
 app.get('/tasks/:id', async (req, res) => {
     try {
         const _id = req.params.id;
@@ -101,7 +94,6 @@ app.get('/tasks/:id', async (req, res) => {
         return res.status(500).send('Internal Server Error');
     }
 })
-
 app.patch('/tasks/:id', async (req, res) => {
     try {
         const isAllowedUpdate = Object.keys(req.body).every((update) => ['description','completed',].includes(update));

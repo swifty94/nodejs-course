@@ -1,9 +1,52 @@
 - 17.02
 
-- Up to lesson 98 completed
+- Up to lesson 100 done
+- REST API routes created:
+<pre>
+{
+    "Resources + HTTP methods available": [
+        {
+        "resource": "/users",
+        "httpMethod": "post"
+        },
+        {
+        "resource": "/users",
+        "httpMethod": "get"
+        },
+        {
+        "resource": "/users/:id",
+        "httpMethod": "get"
+        },
+        {
+        "resource": "/users/:id",
+        "httpMethod": "patch"
+        },
+        {
+        "resource": "/tasks",
+        "httpMethod": "post"
+        },
+        {
+        "resource": "/tasks",
+        "httpMethod": "get"
+        },
+        {
+        "resource": "/tasks/:id",
+        "httpMethod": "get"
+        },
+        {
+        "resource": "/tasks/:id",
+        "httpMethod": "patch"
+        }
+        ],
+    "NOTES":
+        {
+        "1": "To do GET request click on method on this page.",
+        "2": "Use cURL, Postman/SOAP UI or any other tool to perform POST requests"
+        }
+}
+</pre>
 
 - Demo of working REST API
-
 <pre>
 ~ /task-manager-app (master)$ npm run dev
 
