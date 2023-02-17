@@ -20,7 +20,7 @@ app.post('/users', async (req, res) => {
         res.status(201).send({'UserCreated:': user});
     } catch (error) {
         console.log('Error:',error.message);
-        res.status(400).send({'Error:': error.message});
+        return res.status(400).send({'Error:': error.message});
     }
 });
 
@@ -30,7 +30,7 @@ app.get('/users', async (req, res) => {
         res.status(200).send(users);
     } catch (error) {
         console.log('Error:',error.message);
-        res.status(400).send({'Error:': error.message});
+        return res.status(400).send({'Error:': error.message});
     }
 })
 
@@ -45,19 +45,23 @@ app.get('/users/:id', async (req, res) => {
         res.send(user);
     } catch (error) {
         console.log('Error:',error.message);
-        res.status(500).send('Internal Server Error');
+        return res.status(500).send('Internal Server Error');
     }
 })
 
 app.patch('/users/:id', async (req, res) => {
     try {
+        const isAllowedUpdate = Object.keys(req.body).every((update) => ['name','age','password','email',].includes(update));
+        if (!isAllowedUpdate) {
+            return res.status(400).send('Invalid update name or type');
+        }
         const user = await User.findByIdAndUpdate(req.params.id, req.body, {new: true, runValidators: true});
         if (!user) {
             return res.status(404).send();
         }
         return res.send(user);
     } catch (error) {
-        console.log('Error:',error.message);
+        return console.log('Error:',error.message);
     }
 });
 /*
@@ -67,10 +71,10 @@ app.post('/tasks', async (req, res) => {
     try {
         const task = new Task(req.body);
         await task.save();
-        res.status(201).send({'TaskCreated': task})
+        res.status(201).send({'TaskCreated': task});
     } catch (error) {
         console.log('Error:', error);
-        res.status(400).send({'Error': error})
+        return res.status(400).send({'Error': error});
     }
 });
 
@@ -79,7 +83,7 @@ app.get('/tasks', async (req, res) => {
         const task = await Task.find({});
         res.send(task);
     } catch (error) {
-        res.status(500).send({'Error': error});
+        return res.status(500).send({'Error': error});
     }
 })
 
@@ -94,19 +98,23 @@ app.get('/tasks/:id', async (req, res) => {
         res.send(task);
     } catch (error) {
         console.log(error.message);
-        res.status(500).send('Internal Server Error');
+        return res.status(500).send('Internal Server Error');
     }
 })
 
 app.patch('/tasks/:id', async (req, res) => {
     try {
+        const isAllowedUpdate = Object.keys(req.body).every((update) => ['description','completed',].includes(update));
+        if (!isAllowedUpdate) {
+            return res.status(400).send('Invalid update name or type');
+        }
         const task = await Task.findByIdAndUpdate(req.params.id, req.body, {new: true, runValidators: true});
         if (!task) {
             return res.status(404).send();
         }
         return res.send(task);
     } catch (error) {
-        console.log('Error:',error.message);
+        return console.log('Error:',error.message);
     }
 });
 /*
