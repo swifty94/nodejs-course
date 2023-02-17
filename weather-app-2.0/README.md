@@ -1,5 +1,10 @@
 05.02 Result
 
+- !NOTE: repo that was integrated into Render cloud hosting lives here:
+        https://github.com/swifty94/simple-nodejs-weather-app
+
+- Check out the live demo via https://simple-nodejs-weather-app.onrender.com/
+
 <pre>
 AppRoot:.
 |   package-lock.json
