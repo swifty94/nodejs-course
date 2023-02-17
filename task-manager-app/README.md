@@ -41,7 +41,7 @@
     "NOTES":
         {
         "1": "To do GET request click on method on this page.",
-        "2": "Use cURL, Postman/SOAP UI or any other tool to perform POST requests"
+        "2": "Use cURL, Postman/SOAP UI or any other tool to perform POST/PATCH/DELETE requests"
         }
 }
 </pre>
