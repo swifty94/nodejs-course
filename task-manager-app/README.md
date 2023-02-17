@@ -17,16 +17,16 @@ Demo of working REST API
 Server is running on http://DESKTOP-Q9IEVFL:3000/
 </pre>
 
-![](https://github.com/swifty94/nodejs-course/blob/master/task-manager-app/examples/example_1.png)
+- ![](https://github.com/swifty94/nodejs-course/blob/master/task-manager-app/examples/example_1.png)
 
-![](https://github.com/swifty94/nodejs-course/blob/master/task-manager-app/examples/postman_1.png)
+- ![](https://github.com/swifty94/nodejs-course/blob/master/task-manager-app/examples/postman_1.png)
 
-![](https://github.com/swifty94/nodejs-course/blob/master/task-manager-app/examples/postman_2.png)
+- ![](https://github.com/swifty94/nodejs-course/blob/master/task-manager-app/examples/postman_2.png)
 
-![](https://github.com/swifty94/nodejs-course/blob/master/task-manager-app/examples/postman_3.png)
+- ![](https://github.com/swifty94/nodejs-course/blob/master/task-manager-app/examples/postman_3.png)
 
-![](https://github.com/swifty94/nodejs-course/blob/master/task-manager-app/examples/postman_4.png)
+- ![](https://github.com/swifty94/nodejs-course/blob/master/task-manager-app/examples/postman_4.png)
 
-![](https://github.com/swifty94/nodejs-course/blob/master/task-manager-app/examples/postman_5.png)
+- ![](https://github.com/swifty94/nodejs-course/blob/master/task-manager-app/examples/postman_5.png)
 
-![](https://github.com/swifty94/nodejs-course/blob/master/task-manager-app/examples/postman_6.png)
+- ![](https://github.com/swifty94/nodejs-course/blob/master/task-manager-app/examples/postman_6.png)
