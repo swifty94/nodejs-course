@@ -40,7 +40,7 @@ app.get('/users/:id', async (req, res) => {
         res.send(user);
     } catch (error) {
         console.log('Error:',error.message);
-        res.status(500).send({'Error':`ID ${_id} not found`});
+        res.status(500).send('Internal Server Error');
     }
 })
 
@@ -74,8 +74,8 @@ app.get('/tasks/:id', async (req, res) => {
         };
         res.send(task);
     } catch (error) {
-        console.log({'Error':`ID ${_id} not found`});
-        res.status(500).send({'Error':`ID ${_id} not found`});
+        console.log(error.message);
+        res.status(500).send('Internal Server Error');
     }
 })
 
