@@ -1,7 +1,8 @@
 - 17.02
 
-Up to lesson 98 completed
-Demo of working REST API
+- Up to lesson 98 completed
+
+- Demo of working REST API
 
 <pre>
 ~ /task-manager-app (master)$ npm run dev
