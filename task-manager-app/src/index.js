@@ -2,7 +2,6 @@ const express = require('express');
 const os = require('os');
 const userRoute = require('./routers/user');
 const taskRoute = require('./routers/task');
-const catchAllRoute = require('./routers/catch-all');
 const HOST = os.hostname();
 const _PORT = process.env.PORT || 3000;
 const URL_BASE = `http://${HOST}:${_PORT}/`;

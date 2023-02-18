@@ -11,8 +11,7 @@ router.post('/tasks', async (req, res) => {
         await task.save();
         res.status(201).send({TaskCreated: task});
     } catch (error) {
-        console.log('Error:', error);
-        return res.status(400).send({'Error': error});
+        res.status(400).send({'Error': error});
     }
 });
 router.get('/tasks', async (req, res) => {
@@ -20,7 +19,7 @@ router.get('/tasks', async (req, res) => {
         const task = await Task.find({});
         res.send(task);
     } catch (error) {
-        return res.status(500).send({'Error': error});
+        return res.status(500).send();
     }
 })
 router.get('/tasks/:id', async (req, res) => {
@@ -32,8 +31,7 @@ router.get('/tasks/:id', async (req, res) => {
         };
         res.send(task);
     } catch (error) {
-        console.log(error.message);
-        return res.status(500).send({Response: 'Internal Server Error'});
+        return res.status(500).send();
     }
 })
 router.patch('/tasks/:id', async (req, res) => {
@@ -48,7 +46,7 @@ router.patch('/tasks/:id', async (req, res) => {
         }
         return res.send({UpdatedTask: task});
     } catch (error) {
-        return console.log('Error:',error.message);
+        return res.status(500).send();
     }
 });
 router.delete('/tasks/:id', async (req, res) => {
@@ -59,8 +57,7 @@ router.delete('/tasks/:id', async (req, res) => {
         }
         return res.send({DeletedTask: task});
     } catch (error) {
-        console.log('Error:',error.message);
-        return res.status(500).send('Internal Server Error');
+        return res.status(500).send();
     }
 });
 

@@ -11,17 +11,16 @@ router.post('/users', async (req, res) => {
         await user.save();
         res.status(201).send({UserCreated: user});
     } catch (error) {
-        console.log('Error:',error.message);
-        return res.status(400).send({'Error:': error.message});
+        console.log('Error:',error);
+        res.status(400).send({'Error:': error});
     }
 });
 router.get('/users', async (req, res) => {
     try {
         const users = await User.find({});
-        res.status(200).send({AllUsers: users});
+        return res.status(200).send({AllUsers: users});
     } catch (error) {
-        console.log('Error:',error.message);
-        return res.status(500).send({'Error:': error.message});
+        return res.status(500).send();
     }
 })
 router.get('/users/:id', async (req, res) => {
@@ -31,10 +30,9 @@ router.get('/users/:id', async (req, res) => {
         if (!user) {
             res.status(404).send();
         }
-        res.send({UserFound: user});
+        return res.send({UserFound: user});
     } catch (error) {
-        console.log('Error:',error.message);
-        return res.status(500).send('Internal Server Error');
+        return res.status(500).send();
     }
 })
 router.patch('/users/:id', async (req, res) => {
@@ -49,8 +47,7 @@ router.patch('/users/:id', async (req, res) => {
         }
         return res.send({UpdateUser: user});
     } catch (error) {
-        console.log('Error:',error.message);
-        return res.status(500).send('Internal Server Error');
+        return res.status(500).send();
     }
 });
 
@@ -62,8 +59,7 @@ router.delete('/users/:id', async (req, res) => {
         }
         return res.send({DeletedUser: user});
     } catch (error) {
-        console.log('Error:',error.message);
-        return res.status(500).send('Internal Server Error');
+        return res.status(500).send();
     }
 });
 
