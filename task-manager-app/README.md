@@ -1,6 +1,6 @@
-- 18.02
+- Day: 18.02
 
-- Lesson 100 done.
+- Lesson 102.
 
 - REST API for task app created
 
