@@ -13,8 +13,6 @@ const app = express();
 app.use(express.json());
 app.use(userRoute);
 app.use(taskRoute);
-//app.use(catchAllRoute);
-
 /*
  * Catch-all route
 */
