@@ -1,154 +1,36 @@
-const { response } = require('express');
 const express = require('express');
-require('./db/mongoose');
 const os = require('os');
-const Task = require('./models/task');
-const User = require('./models/user');
+const userRoute = require('./routers/user');
+const taskRoute = require('./routers/task');
+const catchAllRoute = require('./routers/catch-all');
 const HOST = os.hostname();
 const _PORT = process.env.PORT || 3000;
+const URL_BASE = `http://${HOST}:${_PORT}/`;
 /*
  * Initialize the express server
 */
 const app = express();
 app.use(express.json());
-/*
- * Users routes
-*/
-app.post('/users', async (req, res) => {
-    const user = new User(req.body);
-    try {
-        await user.save();
-        res.status(201).send({UserCreated: user});
-    } catch (error) {
-        console.log('Error:',error.message);
-        return res.status(400).send({'Error:': error.message});
-    }
-});
-app.get('/users', async (req, res) => {
-    try {
-        const users = await User.find({});
-        res.status(200).send({AllUsers: users});
-    } catch (error) {
-        console.log('Error:',error.message);
-        return res.status(500).send({'Error:': error.message});
-    }
-})
-app.get('/users/:id', async (req, res) => {
-    try {
-        const _id = req.params.id;
-        const user = await User.findById(_id);
-        if (!user) {
-            res.status(404).send();
-        }
-        res.send({UserFound: user});
-    } catch (error) {
-        console.log('Error:',error.message);
-        return res.status(500).send('Internal Server Error');
-    }
-})
-app.patch('/users/:id', async (req, res) => {
-    try {
-        const isAllowedUpdate = Object.keys(req.body).every((update) => ['name','age','password','email',].includes(update));
-        if (!isAllowedUpdate) {
-            return res.status(400).send('Invalid update name or type');
-        }
-        const user = await User.findByIdAndUpdate(req.params.id, req.body, {new: true, runValidators: true});
-        if (!user) {
-            return res.status(404).send();
-        }
-        return res.send({UpdateUser: user});
-    } catch (error) {
-        console.log('Error:',error.message);
-        return res.status(500).send('Internal Server Error');
-    }
-});
+app.use(userRoute);
+app.use(taskRoute);
+//app.use(catchAllRoute);
 
-app.delete('/users/:id', async (req, res) => {
-    try {
-        const user = await User.findByIdAndDelete(req.params.id);
-        if (!user) {
-            return res.status(404).send();
-        }
-        return res.send({DeletedUser: user});
-    } catch (error) {
-        console.log('Error:',error.message);
-        return res.status(500).send('Internal Server Error');
-    }
-});
-/*
- * Tasks routes
-*/
-app.post('/tasks', async (req, res) => {
-    try {
-        const task = new Task(req.body);
-        await task.save();
-        res.status(201).send({TaskCreated: task});
-    } catch (error) {
-        console.log('Error:', error);
-        return res.status(400).send({'Error': error});
-    }
-});
-app.get('/tasks', async (req, res) => {
-    try {
-        const task = await Task.find({});
-        res.send(task);
-    } catch (error) {
-        return res.status(500).send({'Error': error});
-    }
-})
-app.get('/tasks/:id', async (req, res) => {
-    try {
-        const _id = req.params.id;
-        const task = await Task.findById(_id);
-        if (!task) {
-            res.status(404).send({Response:'No such task'});
-        };
-        res.send(task);
-    } catch (error) {
-        console.log(error.message);
-        return res.status(500).send({Response: 'Internal Server Error'});
-    }
-})
-app.patch('/tasks/:id', async (req, res) => {
-    try {
-        const isAllowedUpdate = Object.keys(req.body).every((update) => ['description','completed',].includes(update));
-        if (!isAllowedUpdate) {
-            return res.status(400).send('Invalid update name or type');
-        }
-        const task = await Task.findByIdAndUpdate(req.params.id, req.body, {new: true, runValidators: true});
-        if (!task) {
-            return res.status(404).send();
-        }
-        return res.send({UpdatedTask: task});
-    } catch (error) {
-        return console.log('Error:',error.message);
-    }
-});
-app.delete('/tasks/:id', async (req, res) => {
-    try {
-        const task = await Task.findByIdAndDelete(req.params.id);
-        if (!task) {
-            return res.status(404).send();
-        }
-        return res.send({DeletedTask: task});
-    } catch (error) {
-        console.log('Error:',error.message);
-        return res.status(500).send('Internal Server Error');
-    }
-});
 /*
  * Catch-all route
 */
 app.get('*', (req, res) => {
     const uriScheme = [];
-    app._router.stack.forEach(function(r){
-        if (r.route && r.route.path && r.route.path !== '*'){
-            const method = {
-                resource: r.route.path,
-                httpMethod: r.route.stack[0].method
+    routes = [userRoute, taskRoute]
+    routes.forEach(route => {
+        route.stack.forEach(function(r){
+            if (r.route && r.route.path){
+                const method = {
+                    resource: r.route.path,
+                    httpMethod: r.route.stack[0].method
+                };
+                uriScheme.push(method);
             };
-            uriScheme.push(method);
-        };
+        });
     });
     const description = {
         'AvailableResources' : uriScheme,
@@ -158,9 +40,8 @@ app.get('*', (req, res) => {
         }
     };
     res.send(description);
-})
+});
 
-const URL_BASE = `http://${HOST}:${_PORT}/`;
 app.listen(_PORT, () => {
     console.log(`Server is running on ${URL_BASE}`);
 });
