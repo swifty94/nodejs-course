@@ -1,3 +1,4 @@
+const { response } = require('express');
 const express = require('express');
 require('./db/mongoose');
 const os = require('os');
@@ -17,7 +18,7 @@ app.post('/users', async (req, res) => {
     const user = new User(req.body);
     try {
         await user.save();
-        res.status(201).send({'UserCreated:': user});
+        res.status(201).send({UserCreated: user});
     } catch (error) {
         console.log('Error:',error.message);
         return res.status(400).send({'Error:': error.message});
@@ -26,10 +27,10 @@ app.post('/users', async (req, res) => {
 app.get('/users', async (req, res) => {
     try {
         const users = await User.find({});
-        res.status(200).send(users);
+        res.status(200).send({AllUsers: users});
     } catch (error) {
         console.log('Error:',error.message);
-        return res.status(400).send({'Error:': error.message});
+        return res.status(500).send({'Error:': error.message});
     }
 })
 app.get('/users/:id', async (req, res) => {
@@ -39,7 +40,7 @@ app.get('/users/:id', async (req, res) => {
         if (!user) {
             res.status(404).send();
         }
-        res.send(user);
+        res.send({UserFound: user});
     } catch (error) {
         console.log('Error:',error.message);
         return res.status(500).send('Internal Server Error');
@@ -55,9 +56,23 @@ app.patch('/users/:id', async (req, res) => {
         if (!user) {
             return res.status(404).send();
         }
-        return res.send(user);
+        return res.send({UpdateUser: user});
     } catch (error) {
-        return console.log('Error:',error.message);
+        console.log('Error:',error.message);
+        return res.status(500).send('Internal Server Error');
+    }
+});
+
+app.delete('/users/:id', async (req, res) => {
+    try {
+        const user = await User.findByIdAndDelete(req.params.id);
+        if (!user) {
+            return res.status(404).send();
+        }
+        return res.send({DeletedUser: user});
+    } catch (error) {
+        console.log('Error:',error.message);
+        return res.status(500).send('Internal Server Error');
     }
 });
 /*
@@ -67,7 +82,7 @@ app.post('/tasks', async (req, res) => {
     try {
         const task = new Task(req.body);
         await task.save();
-        res.status(201).send({'TaskCreated': task});
+        res.status(201).send({TaskCreated: task});
     } catch (error) {
         console.log('Error:', error);
         return res.status(400).send({'Error': error});
@@ -86,12 +101,12 @@ app.get('/tasks/:id', async (req, res) => {
         const _id = req.params.id;
         const task = await Task.findById(_id);
         if (!task) {
-            res.status(404).send({'Response':'No such task'});
+            res.status(404).send({Response:'No such task'});
         };
         res.send(task);
     } catch (error) {
         console.log(error.message);
-        return res.status(500).send('Internal Server Error');
+        return res.status(500).send({Response: 'Internal Server Error'});
     }
 })
 app.patch('/tasks/:id', async (req, res) => {
@@ -104,9 +119,21 @@ app.patch('/tasks/:id', async (req, res) => {
         if (!task) {
             return res.status(404).send();
         }
-        return res.send(task);
+        return res.send({UpdatedTask: task});
     } catch (error) {
         return console.log('Error:',error.message);
+    }
+});
+app.delete('/tasks/:id', async (req, res) => {
+    try {
+        const task = await Task.findByIdAndDelete(req.params.id);
+        if (!task) {
+            return res.status(404).send();
+        }
+        return res.send({DeletedTask: task});
+    } catch (error) {
+        console.log('Error:',error.message);
+        return res.status(500).send('Internal Server Error');
     }
 });
 /*
@@ -124,7 +151,7 @@ app.get('*', (req, res) => {
         };
     });
     const description = {
-        'Resources + HTTP methods available' : uriScheme,
+        'AvailableResources' : uriScheme,
         'NOTES': {
             1: 'To do GET request click on method on this page.',
             2: 'Use cURL, Postman/SOAP UI or any other tool to perform POST/PATCH/DELETE requests'
