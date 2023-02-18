@@ -1,76 +1,37 @@
-- 17.02
+- 18.02
 
-- Up to lesson 100 done
-- REST API routes created:
-<pre>
-{
-    "Resources + HTTP methods available": [
-        {
-        "resource": "/users",
-        "httpMethod": "post"
-        },
-        {
-        "resource": "/users",
-        "httpMethod": "get"
-        },
-        {
-        "resource": "/users/:id",
-        "httpMethod": "get"
-        },
-        {
-        "resource": "/users/:id",
-        "httpMethod": "patch"
-        },
-        {
-        "resource": "/tasks",
-        "httpMethod": "post"
-        },
-        {
-        "resource": "/tasks",
-        "httpMethod": "get"
-        },
-        {
-        "resource": "/tasks/:id",
-        "httpMethod": "get"
-        },
-        {
-        "resource": "/tasks/:id",
-        "httpMethod": "patch"
-        }
-        ],
-    "NOTES":
-        {
-        "1": "To do GET request click on method on this page.",
-        "2": "Use cURL, Postman/SOAP UI or any other tool to perform POST/PATCH/DELETE requests"
-        }
-}
-</pre>
+- Lesson 100 done.
 
-- Demo of working REST API
-<pre>
-~ /task-manager-app (master)$ npm run dev
+- REST API for task app created
 
-> task-manager-app@1.0.0 dev
-> nodemon src/index.js
+![](https://github.com/swifty94/nodejs-course/blob/master/task-manager-app/examples/resources.png)
 
-[nodemon] 2.0.20
-[nodemon] to restart at any time, enter `rs`
-[nodemon] watching path(s): *.*
-[nodemon] watching extensions: js,mjs,json
-[nodemon] starting `node src/index.js`
-Server is running on http://DESKTOP-Q9IEVFL:3000/
-</pre>
+- Create user / task
 
-- ![](https://github.com/swifty94/nodejs-course/blob/master/task-manager-app/examples/example_1.png)
+![](https://github.com/swifty94/nodejs-course/blob/master/task-manager-app/examples/create_user.png)
+<br>
+![](https://github.com/swifty94/nodejs-course/blob/master/task-manager-app/examples/create_task.png)
 
-- ![](https://github.com/swifty94/nodejs-course/blob/master/task-manager-app/examples/postman_1.png)
+- Get all users / tasks
 
-- ![](https://github.com/swifty94/nodejs-course/blob/master/task-manager-app/examples/postman_2.png)
+![](https://github.com/swifty94/nodejs-course/blob/master/task-manager-app/examples/get_users.png)
+<br>
+![](https://github.com/swifty94/nodejs-course/blob/master/task-manager-app/examples/get_tasks.png)
 
-- ![](https://github.com/swifty94/nodejs-course/blob/master/task-manager-app/examples/postman_3.png)
+- Get user / task by ID
 
-- ![](https://github.com/swifty94/nodejs-course/blob/master/task-manager-app/examples/postman_4.png)
+![](https://github.com/swifty94/nodejs-course/blob/master/task-manager-app/examples/get_user.png)
+<br>
+![](https://github.com/swifty94/nodejs-course/blob/master/task-manager-app/examples/get_task.png)
 
-- ![](https://github.com/swifty94/nodejs-course/blob/master/task-manager-app/examples/postman_5.png)
+- Update user / task by ID
 
-- ![](https://github.com/swifty94/nodejs-course/blob/master/task-manager-app/examples/postman_6.png)
+![](https://github.com/swifty94/nodejs-course/blob/master/task-manager-app/examples/update_user.png)
+<br>
+![](https://github.com/swifty94/nodejs-course/blob/master/task-manager-app/examples/update_task.png)
+
+- Delete user / task by ID
+
+![](https://github.com/swifty94/nodejs-course/blob/master/task-manager-app/examples/delete_user.png)
+<br>
+![](https://github.com/swifty94/nodejs-course/blob/master/task-manager-app/examples/delete_task.png)
