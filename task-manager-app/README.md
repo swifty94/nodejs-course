@@ -2,6 +2,8 @@
 
 - Lesson 102.
 
+TODO: // Implement authorization and authentication + GUI
+
 - REST API for task app created
 
 ![](https://github.com/swifty94/nodejs-course/blob/master/task-manager-app/examples/resources.png)
