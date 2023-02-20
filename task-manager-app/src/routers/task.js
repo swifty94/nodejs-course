@@ -1,22 +1,22 @@
 require('../db/mongoose');
-const Task = require('../models/task');
+const TaskModel = require('../models/task');
 const express = require('express');
 const router = new express.Router();
 /*
- * Tasks routes
+ * TaskModels routes
 */
 router.post('/tasks', async (req, res) => {
     try {
-        const task = new Task(req.body);
+        const task = new TaskModel(req.body);
         await task.save();
-        res.status(201).send({TaskCreated: task});
+        res.status(201).send({TaskModelCreated: task});
     } catch (error) {
         res.status(400).send({'Error': error});
     }
 });
 router.get('/tasks', async (req, res) => {
     try {
-        const task = await Task.find({});
+        const task = await TaskModel.find({});
         res.send(task);
     } catch (error) {
         return res.status(500).send();
@@ -25,7 +25,7 @@ router.get('/tasks', async (req, res) => {
 router.get('/tasks/:id', async (req, res) => {
     try {
         const _id = req.params.id;
-        const task = await Task.findById(_id);
+        const task = await TaskModel.findById(_id);
         if (!task) {
             res.status(404).send({Response:'No such task'});
         };
@@ -40,22 +40,22 @@ router.patch('/tasks/:id', async (req, res) => {
         if (!isAllowedUpdate) {
             return res.status(400).send('Invalid update name or type');
         }
-        const task = await Task.findByIdAndUpdate(req.params.id, req.body, {new: true, runValidators: true});
+        const task = await TaskModel.findByIdAndUpdate(req.params.id, req.body, {new: true, runValidators: true});
         if (!task) {
             return res.status(404).send();
         }
-        return res.send({UpdatedTask: task});
+        return res.send({UpdatedTaskModel: task});
     } catch (error) {
         return res.status(500).send();
     }
 });
 router.delete('/tasks/:id', async (req, res) => {
     try {
-        const task = await Task.findByIdAndDelete(req.params.id);
+        const task = await TaskModel.findByIdAndDelete(req.params.id);
         if (!task) {
             return res.status(404).send();
         }
-        return res.send({DeletedTask: task});
+        return res.send({DeletedTaskModel: task});
     } catch (error) {
         return res.status(500).send();
     }

@@ -1,15 +1,15 @@
 require('../db/mongoose');
-const User = require('../models/user');
+const UserModel = require('../models/user');
 const express = require('express');
 const router = new express.Router();
 /*
- * Users routes
+ * UserModels routes
 */
 router.post('/users', async (req, res) => {
-    const user = new User(req.body);
+    const user = new UserModel(req.body);
     try {
         await user.save();
-        res.status(201).send({UserCreated: user});
+        res.status(201).send({UserModelCreated: user});
     } catch (error) {
         console.log('Error:',error);
         res.status(400).send({'Error:': error});
@@ -17,8 +17,8 @@ router.post('/users', async (req, res) => {
 });
 router.get('/users', async (req, res) => {
     try {
-        const users = await User.find({});
-        return res.status(200).send({AllUsers: users});
+        const users = await UserModel.find({});
+        return res.status(200).send({AllUserModels: users});
     } catch (error) {
         return res.status(500).send();
     }
@@ -26,38 +26,43 @@ router.get('/users', async (req, res) => {
 router.get('/users/:id', async (req, res) => {
     try {
         const _id = req.params.id;
-        const user = await User.findById(_id);
+        const user = await UserModel.findById(_id);
         if (!user) {
             res.status(404).send();
         }
-        return res.send({UserFound: user});
+        return res.send({UserModelFound: user});
     } catch (error) {
         return res.status(500).send();
     }
 })
 router.patch('/users/:id', async (req, res) => {
+    updates = ['name','age','password','email',];
+    const isAllowedUpdate = Object.keys(req.body).every((update) => updates.includes(update));
+    if (!isAllowedUpdate) {
+        return res.status(400).send('Invalid update name or type');
+    }
     try {
-        const isAllowedUpdate = Object.keys(req.body).every((update) => ['name','age','password','email',].includes(update));
-        if (!isAllowedUpdate) {
-            return res.status(400).send('Invalid update name or type');
-        }
-        const user = await User.findByIdAndUpdate(req.params.id, req.body, {new: true, runValidators: true});
+        const user = await UserModel.findById(req.params.id);
+        updates.forEach((update) => user[update] = req.body[update]);
+        await user.save();
+        // const user = await UserModel.findByIdAndUpdate(req.params.id, req.body, {new: true, runValidators: true});
         if (!user) {
             return res.status(404).send();
         }
-        return res.send({UpdateUser: user});
+        return res.send({UpdateUserModel: user});
     } catch (error) {
+        console.error(error);
         return res.status(500).send();
     }
 });
 
 router.delete('/users/:id', async (req, res) => {
     try {
-        const user = await User.findByIdAndDelete(req.params.id);
+        const user = await UserModel.findByIdAndDelete(req.params.id);
         if (!user) {
             return res.status(404).send();
         }
-        return res.send({DeletedUser: user});
+        return res.send({DeletedUserModel: user});
     } catch (error) {
         return res.status(500).send();
     }
