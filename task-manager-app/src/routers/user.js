@@ -51,7 +51,6 @@ router.patch('/users/:id', async (req, res) => {
         }
         return res.send({UpdateUserModel: user});
     } catch (error) {
-        console.error(error);
         return res.status(500).send();
     }
 });
