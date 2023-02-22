@@ -1,5 +1,10 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
+/**
+ * Currently, the mechanism of updating an existing user requires all fields to be updated in REST API call
+ * Makes sense considering schema definitions
+ * TODO: wrap this in GUI properly, e.g., confirm password/email upon each profile update/ TBD
+ */
 
 const UserSchema = mongoose.Schema({
     name: {
