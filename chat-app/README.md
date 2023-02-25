@@ -17,7 +17,7 @@ TODO for v1:
 - Create single chat room client to client (groups TODO for v2)
 - Create basic send email upon sing up and creating and individual chat room.
 - Create basic sing up + validation algorithm:
-   - user A creates a chat room -> user B authenticated from email received from sing up form created by user A
+   - user A creates a chat room -> user B authenticated from email received from sing up form created by user A -> choose username -> login to chat room
 - Send receive message withing room between 2 clients:
     - user A sends message -> user B see an update as well as user A see this on his screen and vise versa.
     - TODO for v2: not only text messages...
