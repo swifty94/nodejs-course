@@ -11,7 +11,7 @@ var emailClient = nodemailer.createTransport({
 
 var emailOptions = {
   from: settings.SMTP_USERNAME,
-  to: 'kirillrudenko1994@gmail.com',
+  to: '', // get receiver addresses dynamically
   subject: settings.EMAIL_SUBJECT,
   text: settings.EMAIL_TEXT
 };
