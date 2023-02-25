@@ -15,6 +15,7 @@ TODO for v1:
     - Previous rule applies here as well :)
     - Empty chat until user B is connected
 - Create single chat room client to client (groups TODO for v2)
+- Email functionality :heavy_check_mark:
 - Create basic send email upon sing up and creating and individual chat room.
 - Create basic sing up + validation algorithm:
    - user A creates a chat room -> user B authenticated from email received from sing up form created by user A -> choose username -> login to chat room
