@@ -13,17 +13,17 @@ const publicDirectoryPath = path.join(__dirname, '../public')
 app.use(express.static(publicDirectoryPath))
 
 io.on('connection', (socket) => {
-    console.log('New WebSocket connection')
+    let user = socket.conn.id
+    socket.emit('welcomeMessage', `Your unique ID is - ${user}`)
+    socket.broadcast.emit('welcomeMessage', `UserID ${user} has joined!`)
 
-    socket.emit('message', 'Welcome!')
-    socket.broadcast.emit('message', 'A new user has joined!')
-
-    socket.on('sendMessage', (message) => {
-        io.emit('message', message)
+    socket.on('sendMessage', (message, callback) => {
+        io.emit('message', `[${user}]: ${message}`);
+        callback();
     })
 
     socket.on('disconnect', () => {
-        io.emit('message', 'A user has left!')
+        io.emit('message', `User_${user} has left!`);
     })
 })
 
