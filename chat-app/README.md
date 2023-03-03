@@ -5,6 +5,11 @@ Description:
 A simple chat application using NodeJS + WebSocket and HTML/CSS
 Idea is to have a lightweight, one-time secure chat room with client-to-client communication.
 
+Current, very simple chat application
+---
+![](https://github.com/swifty94/nodejs-course/tree/master/chat-app/blob/master/chat.gif)
+
+
 TODO for v1:
 ---
 
