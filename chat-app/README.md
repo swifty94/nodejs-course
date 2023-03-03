@@ -7,7 +7,7 @@ Idea is to have a lightweight, one-time secure chat room with client-to-client c
 
 Current, very simple chat application
 ---
-![](https://github.com/swifty94/nodejs-course/tree/master/chat-app/blob/master/chat.gif)
+![](https://github.com/swifty94/nodejs-course/blob/master/chat-app/chat.gif)
 
 
 TODO for v1:
